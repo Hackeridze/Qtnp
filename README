@@ -1,12 +1,8 @@
-E-mail: Victor Hackeridze
+E-mail: <hackeridze@gmail.com> Victor Hackeridze
 
 COMPILE
-    $ qmake
-    $ make
+	$ qmake
+	$ make
 
 RUN
-    $ ./Qtnp
-
-TODO:
-    * Dynamic interface translating.
-    * Forms.
+	$ ./Qtnp
