@@ -4,3 +4,4 @@ moc_*.cpp
 Makefile
 Qtnp
 *.o
+qrc_*.cpp
