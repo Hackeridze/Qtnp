@@ -1,0 +1,12 @@
+E-mail: Victor Hackeridze
+
+COMPILE
+    $ qmake
+    $ make
+
+RUN
+    $ ./Qtnp
+
+TODO:
+    * Dynamic interface translating.
+    * Forms.

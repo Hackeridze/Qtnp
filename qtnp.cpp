@@ -1,0 +1,334 @@
+#include "qtnp.h"
+#include "ui_qtnp.h"
+
+#define NORMAL_BUTTON_SIZE 33 // норм размер кнопок
+
+Qtnp::Qtnp(QWidget *parent) :
+        QMainWindow(parent),
+        ui(new Ui::Qtnp)
+{
+	ui->setupUi(this);
+	is_fullscreen = 0;
+	image = new QtnpImage; // новый виджет изображения
+	saved_image = new QtnpImage; // сохраненное изображение
+	saved_image = image;
+	opened_file_location = "0"; // путь и имя открытого файла
+	is_freshly = 1;
+
+	// виджеты смены цвета кнопок
+	rpen_widget = new QtnpColorWidget(255,255,255);
+	rpen_widget->setStatusTip(tr("Right pen color!"));
+	pen_widget = new QtnpColorWidget(0,0,0);
+	pen_widget->setStatusTip(tr("Pen color!"));
+
+	tricksess_box = new QSpinBox;
+	tricksess_box->setRange(1,200);
+	tricksess_box->setValue(1);
+
+	prev_button = new QPushButton;
+	prev_button->setIcon(QIcon(":/res/prev.png"));
+	prev_button->setStatusTip(tr("Previous!"));
+
+	new_file_button = new QPushButton;
+	new_file_button->setIcon(QIcon(":/res/new.png"));
+	new_file_button->setStatusTip(tr("New!"));
+
+	add_grid_button = new QPushButton;
+	add_grid_button->setIcon(QIcon(":/res/grid.png"));
+	add_grid_button->setStatusTip(tr("Grid!"));
+
+	draw_graphic_button = new QPushButton;
+	draw_graphic_button->setIcon(QIcon(":/res/graphic.png"));
+	draw_graphic_button->setStatusTip(tr("graphic!"));
+
+
+	tools_menu = new QtnpMenuWidget;
+	tools_menu->setStatusTip(tr("Tools"));
+
+	change_pens_button = new QPushButton;
+	change_pens_button->setIcon(QIcon(":/res/change_pens_ico.png"));
+	change_pens_button->setStatusTip(tr("Change your pens!"));
+
+	fullscreen_button = new QPushButton;
+	fullscreen_button->setIcon(QIcon(":/res/fullscreen.png"));
+	fullscreen_button->setStatusTip(tr("MAAAX!"));
+
+	this->ui->scrollArea->setWidget(image);
+	this->ui->scrollArea->setBackgroundRole(QPalette::Dark);
+	this->ui->scrollArea->setAlignment(Qt::AlignTop);
+	this->setCentralWidget(this->ui->scrollArea);
+
+	resize(1050,850); // меняем размер окна
+}
+Qtnp::~Qtnp()
+{
+	delete ui;
+	delete image;
+	delete tricksess_box;
+	delete pen_widget;
+	delete rpen_widget;
+	//delete savedImage;
+	//delete tricksessBox;
+	delete prev_button;
+	delete new_file_button;
+	delete add_grid_button;
+	delete draw_graphic_button;
+	delete tools_menu;
+	delete change_pens_button;
+	delete fullscreen_button;
+}
+// обработка попытки закрыть окно
+void Qtnp::closeEvent(QCloseEvent *event)
+{
+	if (check_saving()) {
+		event->accept();
+	} else {
+		save_file_because(tr("Save before closing?"));
+		event->accept();
+	}
+}
+
+void Qtnp::connections()
+{
+	connect(ui->actionExit, SIGNAL(triggered()), this,SLOT(exit_clicked()));
+	connect(pen_widget,SIGNAL(send_color(QColor)),image,SLOT(set_pen_color(QColor)));
+	connect(rpen_widget,SIGNAL(send_color(QColor)),image,SLOT(set_rpen_color(QColor)));
+	connect(change_pens_button,SIGNAL(clicked()),this,SLOT(change_pens()));
+	connect(tricksess_box,SIGNAL(valueChanged(int)),image,SLOT(pen_trickness(int)));
+	connect(fullscreen_button,SIGNAL(clicked()),this,SLOT(full_screen()));
+	connect(ui->actionAbout_Qtnp,SIGNAL(triggered()),this,SLOT(about()));
+	connect(ui->actionFullScreen,SIGNAL(triggered()),this,SLOT(full_screen()));
+	connect(ui->actionNew,SIGNAL(triggered()),this,SLOT(new_file()));
+	connect(ui->actionOpen,SIGNAL(triggered()),this,SLOT(open_file()));
+	connect(ui->actionSave_as,SIGNAL(triggered()),this,SLOT(save_as()));
+	connect(ui->actionSave,SIGNAL(triggered()),this,SLOT(save_file()));
+	connect(ui->actionGrid,SIGNAL(triggered()),this,SLOT(add_grid()));
+	connect(ui->actionCursor,SIGNAL(triggered()),this,SLOT(set_tool_NONE()));
+	connect(ui->actionPen,SIGNAL(triggered()),this,SLOT(set_tool_PEN()));
+	connect(ui->actionLine,SIGNAL(triggered()),this,SLOT(set_tool_LINE()));
+	connect(ui->actionSquare,SIGNAL(triggered()),this,SLOT(set_tool_SQUARE()));
+	connect(ui->actionEllipse,SIGNAL(triggered()),this,SLOT(set_tool_ELLIPSE()));
+	connect(ui->actionNegative,SIGNAL(triggered()),image,SLOT(negative()));
+	connect(ui->actionGrayscale,SIGNAL(triggered()),image,SLOT(grayscale()));
+	connect(ui->actionGraphic,SIGNAL(triggered()),this,SLOT(draw_graphic()));
+	connect(new_file_button,SIGNAL(clicked()),this,SLOT(new_file()));
+	connect(add_grid_button,SIGNAL(clicked()),this,SLOT(add_grid()));
+	connect(draw_graphic_button,SIGNAL(clicked()),this,SLOT(draw_graphic()));
+	connect(prev_button,SIGNAL(clicked()),image,SLOT(prev()));
+	connect(image,SIGNAL(reset_tool_menu()),tools_menu,SLOT(none()));
+	connect(tools_menu,SIGNAL(choosen_tool(QtnpTool)),image,SLOT(set_active_tool(QtnpTool)));
+}
+
+void Qtnp::load_status_bar()
+{
+	this->ui->statusBar->addPermanentWidget(new_file_button);
+	this->ui->statusBar->addPermanentWidget(add_grid_button);
+	this->ui->statusBar->addPermanentWidget(draw_graphic_button);
+	this->ui->statusBar->addPermanentWidget(prev_button);
+	this->ui->statusBar->addPermanentWidget(tools_menu);
+	this->ui->statusBar->addPermanentWidget(pen_widget);
+	this->ui->statusBar->addPermanentWidget(rpen_widget);
+	this->ui->statusBar->addPermanentWidget(change_pens_button);
+	this->ui->statusBar->addPermanentWidget(tricksess_box);
+	this->ui->statusBar->addPermanentWidget(fullscreen_button);
+}
+
+// устанавливаем нормальный размер лажи и иконки
+void Qtnp::buttons_resize()
+{
+	tricksess_box->setFixedSize(NORMAL_BUTTON_SIZE+20,NORMAL_BUTTON_SIZE);
+	change_pens_button->setFixedSize(NORMAL_BUTTON_SIZE,NORMAL_BUTTON_SIZE);
+	change_pens_button->setIconSize(QSize(NORMAL_BUTTON_SIZE-6,NORMAL_BUTTON_SIZE-6));
+	fullscreen_button->setFixedSize(QSize(NORMAL_BUTTON_SIZE,NORMAL_BUTTON_SIZE));
+	fullscreen_button->setIconSize(QSize(NORMAL_BUTTON_SIZE-1,NORMAL_BUTTON_SIZE-1));
+	tools_menu->setFixedSize(QSize(NORMAL_BUTTON_SIZE+4,NORMAL_BUTTON_SIZE));
+	tools_menu->setIconSize(QSize(NORMAL_BUTTON_SIZE-1,NORMAL_BUTTON_SIZE-1));
+	add_grid_button->setIconSize(QSize(NORMAL_BUTTON_SIZE-1,NORMAL_BUTTON_SIZE-1));
+	add_grid_button->setFixedSize(QSize(NORMAL_BUTTON_SIZE,NORMAL_BUTTON_SIZE));
+	new_file_button->setIconSize(QSize(NORMAL_BUTTON_SIZE-1,NORMAL_BUTTON_SIZE-1));
+	new_file_button->setFixedSize(QSize(NORMAL_BUTTON_SIZE,NORMAL_BUTTON_SIZE));
+	draw_graphic_button->setIconSize(QSize(NORMAL_BUTTON_SIZE-1,NORMAL_BUTTON_SIZE-1));
+	draw_graphic_button->setFixedSize(QSize(NORMAL_BUTTON_SIZE,NORMAL_BUTTON_SIZE));
+	prev_button->setIconSize(QSize(NORMAL_BUTTON_SIZE,NORMAL_BUTTON_SIZE));
+	prev_button->setFixedSize(QSize(NORMAL_BUTTON_SIZE-1,NORMAL_BUTTON_SIZE));
+	// устанавливаем иконки
+	ui->actionSave->setIcon(QIcon(":/res/save.png"));
+	ui->actionSave_as->setIcon(QIcon(":/res/save_as.png"));
+	ui->actionNew->setIcon(QIcon(":/res/new.png"));
+	ui->actionAbout_Qtnp->setIcon(QIcon(":/res/about.png"));
+	ui->actionFullScreen->setIcon(QIcon(":/res/fullscreen.png"));
+	ui->actionExit->setIcon(QIcon(":/res/exit.png"));
+	ui->actionOpen->setIcon(QIcon(":/res/open.png"));
+	ui->actionPen->setIcon(QIcon(":/res/pencil_ico.png"));
+	ui->actionLine->setIcon(QIcon(":/res/line_ico.png"));
+	ui->actionGrid->setIcon(QIcon(":/res/grid.png"));
+	ui->actionGraphic->setIcon(QIcon(":/res/graphic.png"));
+	ui->actionCursor->setIcon(QIcon(":/res/cursor.png"));
+}
+
+void Qtnp::about()
+{
+	QMessageBox::about(this, tr("About Qtnp"),
+	                   tr("<body style=\" font-family:'Ubuntu'; font-size:11pt; font-weight:400; font-style:normal;\">"
+	"<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-center:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" \"font-\"size:16pt; font-weight:600; color:#10AA10;\">Qtnp</span></p>"
+	"<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-center:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:14pt; font-weight:600; color:#20AA20;\">Cute Noob-Painter</span></p>"
+	"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"></p>"
+	"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"></p>"
+	"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">Victor Hackeridze <a href=\"mailto:hackeridze@gmail.com\"><span style=\" text-decoration: underline; color:#0000ff;\">hackeridze@gmail.com</span></a></p>"
+	"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"></p>"
+	"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">Qtnp is Free Software and it under GPL. Used code\\libs: muParser, Qt.</p>"
+	                      ));
+}
+
+// Создание нового файла
+void Qtnp::new_file()
+{
+	new_file_dialog = new QtnpNewFileDialog(this);// создаем окно создания нового файла
+	connect(new_file_dialog,SIGNAL(new_image(int,int,QColor)),image,SLOT(new_image(int,int,QColor)));
+	connect(new_file_dialog,SIGNAL(add_grid(int,QColor,int)),image,SLOT(make_grid(int,QColor,int)));
+	connect(new_file_dialog,SIGNAL(add_coord_plane(int,QColor,int)),image,SLOT(make_coord_plane(int,QColor,int)));
+	new_file_dialog->show();
+	saved_image = image;
+}
+// Открытие файла
+void Qtnp::open_file()
+{
+	QString fileName = QFileDialog::getOpenFileName(this, tr("Open Image..."));
+	if (!fileName.isEmpty()) {
+		image->load_image(fileName);
+		ui->statusBar->showMessage(tr("Image openned!"), 2000);
+		image->resize(image->pixmap()->size());
+		opened_file_location = fileName;
+		is_freshly = 0;
+		saved_image = image;
+	} else {
+		ui->statusBar->showMessage(tr("Can't open Image!"), 2000);  // такое
+	}
+}
+
+bool Qtnp::check_saving()
+{
+	if(saved_image == image) return true;
+	else return false;
+}
+// вызывает Сохранить как с нужным заголовком
+void Qtnp::save_as()
+{
+	save_file_because(tr("Save current image as..."));
+}
+// сохраняет файл
+void Qtnp::save_file()
+{
+	check_saving();
+	if((is_freshly == 1) || (opened_file_location == "0")) { // если это первый запуск,
+		save_file_because(tr("Where save?")); //	вызываем диалог сохранения файла
+	} else if(check_saving()) {
+		image->save_image(opened_file_location);
+		ui->statusBar->showMessage(tr("Save completed"), 2000);
+	}
+	ui->statusBar->showMessage(tr("Save earlier"), 2000);
+}
+
+// вызывает диалог сохранения файла с нужным заголовком
+void Qtnp::save_file_because(QString reason)
+{
+	QFileDialog::Options options;
+	QString filter;
+	options |= QFileDialog::DontUseNativeDialog; // недаем юзать стандартный диалог
+	QString fileName = QFileDialog::getSaveFileName(
+	                           this, reason,
+	                           "",
+	                           tr("*.png;;*.jpg;;*.jpeg;;*.bmp;;*.xbm;;*.xpm"),
+	                           &filter,
+	                           options
+	                           );
+	if(!fileName.isEmpty()) {
+		QApplication::setOverrideCursor(Qt::WaitCursor); // меняем курсор на курсор ДУМАЮ
+		int length(filter.size());
+		for(int i(length - 1); i > 0; i--) {
+			if(filter[i] != fileName[fileName.size() - length + i]) {
+				fileName += filter.mid(1);
+				break;
+			}
+		}
+		image->save_image(fileName);
+		ui->statusBar->showMessage(tr("Save completed"), 2000);
+		opened_file_location = fileName; // сохраняем, в какой файл сохранили
+		saved_image = image; // сохраненное изображение, для последующей проверки
+		is_freshly = 0;
+		QApplication::restoreOverrideCursor(); // возвращаем курсор
+	}
+
+}
+
+// обработка нажатия Exit из меню File
+void Qtnp::exit_clicked()
+{
+	this->close();
+}
+
+void Qtnp::add_grid()
+{
+	add_grid_dialog = new QtnpAddGridDialog(this);
+	connect(add_grid_dialog,SIGNAL(add_grid(int,QColor,int)),image,SLOT(make_grid(int,QColor,int)));
+	connect(add_grid_dialog,SIGNAL(add_coord_plane(int,QColor,int)),image,SLOT(make_coord_plane(int,QColor,int)));
+	add_grid_dialog->show();
+
+}
+
+void Qtnp::full_screen()
+{
+	if (is_fullscreen == 0) {
+		this->showFullScreen(); // делаем фалскрин
+		this->ui->menuBar->setVisible(0); // убираем верхнюю
+		is_fullscreen = 1;
+	} else {
+		this->showNormal();
+		this->ui->menuBar->setVisible(1);
+		is_fullscreen = 0;
+	}
+}
+
+void Qtnp::change_pens()
+{
+	QColor buff;
+	buff = image->get_pen_color(1); // получаем цвет правой кноки
+	image->set_rpen_color(image->get_pen_color(0)); // устанавливаем цвет правой как у левой
+	image->set_pen_color(buff); // устанавливаем цвет левой из буфера
+	pen_widget->set_color(buff); // <-+ устанавливаем цвета виджетов смены цвета
+	rpen_widget->set_color(image->get_pen_color(1));
+
+}
+
+void Qtnp::draw_graphic()
+{
+	draw_graphic_dialog = new QtnpGraphicDialog;
+	connect(draw_graphic_dialog,SIGNAL(get_data(QString,QColor,int)),image,SLOT(draw_graphic(QString,QColor,int)));
+	draw_graphic_dialog->show();
+}
+
+// ФУНКЦИИ СТАНОВКИ ТУЛЗОВ
+void Qtnp::set_tool_NONE()
+{
+	image->set_active_tool(NONE);
+}
+void Qtnp::set_tool_PEN()
+{
+	image->set_active_tool(PEN);
+}
+void Qtnp::set_tool_LINE()
+{
+	image->set_active_tool(LINE);
+}
+void Qtnp::set_tool_SQUARE()
+{
+	image->set_active_tool(SQUARE);
+}
+void Qtnp::set_tool_ELLIPSE()
+{
+	image->set_active_tool(ELLIPSE);
+}
+void Qtnp::set_tool_JOGGED_LINE()
+{
+	image->set_active_tool(JOGGED_LINE);
+}
