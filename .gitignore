@@ -1,7 +1,7 @@
 ui_*.h
-moc_*.cpp
+moc_*
 *.user
 Makefile
 Qtnp
 *.o
-qrc_*.cpp
+qrc_*
