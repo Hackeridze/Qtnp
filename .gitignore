@@ -2,3 +2,5 @@ ui_*.h
 moc_*.cpp
 *.user
 Makefile
+Qtnp
+*.o
