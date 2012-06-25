@@ -4,14 +4,14 @@
 #
 #-------------------------------------------------
 
-QT       += core gui
+QT  += core gui
 
 TARGET = Qtnp
 TEMPLATE = app
 
 
-SOURCES += main.cpp\
-        qtnp.cpp \
+SOURCES += main.cpp \
+    qtnp.cpp \
     QtnpColorWidget.cpp \
     QtnpImage.cpp \
     QtnpNewFileDialog.cpp \
@@ -30,7 +30,7 @@ SOURCES += main.cpp\
     QtnpGraphicDialog.cpp \
     QtnpMenuWidget.cpp
 
-HEADERS  += qtnp.h\
+HEADERS  += qtnp.h \
     QtnpColorWidget.h \
     QtnpTool.h \
     QtnpImage.h \
@@ -66,11 +66,7 @@ RESOURCES += \
     res.qrc
 
 TRANSLATIONS = qtnp_ru.ts\
-	qtnp_az.ts\
-	qtnp_de.ts\
-	qtnp_kz.ts\
-        qtnp_be.ts\
-        qtnp_en.ts
+    qtnp_en.ts
 
 OTHER_FILES += \
     res/template.png \
