@@ -94,4 +94,5 @@ OTHER_FILES += \
     res/cursor.png \
     res/circle.png \
     res/change_pens_ico.png \
-    res/about.png
+    res/about.png \
+    VERSION
