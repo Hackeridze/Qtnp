@@ -186,14 +186,18 @@ void Qtnp::buttons_resize()
 void Qtnp::about()
 {
 	QMessageBox::about(this, tr("About Qtnp"),
-	                   tr("<body style=\" font-family:'Ubuntu'; font-size:11pt; font-weight:400; font-style:normal;\">"
-	"<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-center:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" \"font-\"size:16pt; font-weight:600; color:#10AA10;\">Qtnp</span></p>"
-	"<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-center:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:14pt; font-weight:600; color:#20AA20;\">Cute Noob-Painter</span></p>"
-	"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"></p>"
-	"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"></p>"
-	"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">Victor Hackeridze <a href=\"mailto:hackeridze@gmail.com\"><span style=\" text-decoration: underline; color:#0000ff;\">hackeridze@gmail.com</span></a></p>"
-	"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"></p>"
-	"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">Qtnp is Free Software and it under GPL. Used code\\libs: muParser, Qt.</p>"
+	                   tr(
+	                           "<p align=\"center\"><span style=\" font-size:14pt; font-weight:600; color:#20AA20;\">Cute Noob-Painter</span></p>"
+	                           "<br>"
+	                           "&nbsp; Qtnp  Copyright (C) 2012  Victor Hackeridze<br>"
+	                           "&nbsp; This program comes with ABSOLUTELY NO WARRANTY.<br>"
+	                           "&nbsp; This is free software, and you are welcome to<br>"
+	                           "&nbsp; redistribute it under certain conditions.<br>"
+	                           "&nbsp; For more look at <a href=\"http://www.gnu.org/licenses/gpl-3.0.html\">www.gnu.org</a><br>"
+	                           "<p align=\"center\"><img src=\":res/GNU_GPLv3_Logo.svg\" type=\"image/svg+xml\" width=\"250\" height=\"124\" /></p>"
+	                           "&nbsp; Official git repo: <a href=\"https://github.com/Hackeridze/Qtnp\">https://github.com/Hackeridze/Qtnp</a><br>"
+	                           "<br>"
+	                           "&nbsp; E-mail: <a href=\"mailto:hackeridze@gmail.com\">hackeridze@gmail.com</a>"
 	                      ));
 }
 

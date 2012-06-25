@@ -24,5 +24,6 @@
         <file>res/prev.png</file>
         <file>res/template.png</file>
         <file>res/circle.png</file>
+        <file>res/GNU_GPLv3_Logo.svg</file>
     </qresource>
 </RCC>

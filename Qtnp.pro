@@ -71,3 +71,31 @@ TRANSLATIONS = qtnp_ru.ts\
 	qtnp_kz.ts\
         qtnp_be.ts\
         qtnp_en.ts
+
+OTHER_FILES += \
+    res/template.png \
+    res/splash.png \
+    res/save.png \
+    res/save_as.png \
+    res/qtnp_ru.qm \
+    res/qtnp_en.qm \
+    res/prev.png \
+    res/pencil.png \
+    res/pencil_ico.png \
+    res/open.png \
+    res/offspring.png \
+    res/next.png \
+    res/new.png \
+    res/line.png \
+    res/line_ico.png \
+    res/jogged.png \
+    res/jogged_ico.png \
+    res/grid.png \
+    res/graphic.png \
+    res/GNU_GPLv3_Logo.svg \
+    res/fullscreen.png \
+    res/exit.png \
+    res/cursor.png \
+    res/circle.png \
+    res/change_pens_ico.png \
+    res/about.png
