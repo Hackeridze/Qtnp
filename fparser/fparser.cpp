@@ -35,7 +35,7 @@ double QtnpParser::getR(value_type x)
 	try {
 		p.DefineVar("x",&x);
 	} catch (Parser::exception_type &e) {
-		std::cerr << e.GetMsg() << endl;
+		std::cerr << e.GetMsg() << std::endl;
 	}
 	return p.Eval();
 }
