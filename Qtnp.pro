@@ -28,7 +28,8 @@ SOURCES += main.cpp \
     fparser/muparser/muParser.cpp \
     fparser/fparser.cpp \
     QtnpGraphicDialog.cpp \
-    QtnpMenuWidget.cpp
+    QtnpMenuWidget.cpp \
+    digital_clock.cpp
 
 HEADERS  += qtnp.h \
     QtnpColorWidget.h \
@@ -53,7 +54,8 @@ HEADERS  += qtnp.h \
     fparser/muparser/muParser.h \
     fparser/fparser.h \
     QtnpGraphicDialog.h \
-    QtnpMenuWidget.h
+    QtnpMenuWidget.h \
+    digital_clock.h
 
 FORMS += \
     qtnp.ui \

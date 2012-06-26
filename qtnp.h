@@ -26,6 +26,7 @@
 #include "QtnpAddGridDialog.h"
 #include "QtnpGraphicDialog.h"
 #include "QtnpMenuWidget.h"
+#include "digital_clock.h"
 
 namespace Ui {
 class Qtnp;
@@ -63,6 +64,7 @@ private slots:
 	void draw_graphic();
 
 private:
+	digital_clock *statusbar_clock;
 	QtnpImage *image;
 	QtnpColorWidget *pen_widget, *rpen_widget;
 	QSpinBox *tricksess_box;

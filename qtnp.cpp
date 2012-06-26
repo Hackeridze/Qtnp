@@ -24,6 +24,8 @@ Qtnp::Qtnp(QWidget *parent) :
         QMainWindow(parent),
         ui(new Ui::Qtnp)
 {
+	statusbar_clock = new digital_clock;
+	
 	ui->setupUi(this);
 	is_fullscreen = 0;
 	image = new QtnpImage;
@@ -91,6 +93,7 @@ Qtnp::~Qtnp()
 	delete tools_menu;
 	delete change_pens_button;
 	delete fullscreen_button;
+	delete statusbar_clock;
 }
 
 void Qtnp::closeEvent(QCloseEvent *event)
@@ -136,6 +139,7 @@ void Qtnp::connections()
 
 void Qtnp::load_status_bar()
 {
+	this->ui->statusBar->addPermanentWidget(statusbar_clock);
 	this->ui->statusBar->addPermanentWidget(new_file_button);
 	this->ui->statusBar->addPermanentWidget(add_grid_button);
 	this->ui->statusBar->addPermanentWidget(draw_graphic_button);
