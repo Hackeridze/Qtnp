@@ -27,8 +27,7 @@ Qtnp::Qtnp(QWidget *parent) :
 	ui->setupUi(this);
 	is_fullscreen = 0;
 	image = new QtnpImage;
-	saved_image = new QtnpImage;
-	saved_image = image;
+
 	opened_file_location = "0";
 	is_freshly = 1;
 
@@ -206,7 +205,7 @@ void Qtnp::new_file()
 	connect(new_file_dialog,SIGNAL(add_grid(int,QColor,int)),image,SLOT(make_grid(int,QColor,int)));
 	connect(new_file_dialog,SIGNAL(add_coord_plane(int,QColor,int)),image,SLOT(make_coord_plane(int,QColor,int)));
 	new_file_dialog->show();
-	saved_image = image;
+	//saved_image = image;
 }
 
 void Qtnp::open_file()
@@ -218,7 +217,7 @@ void Qtnp::open_file()
 		image->resize(image->pixmap()->size());
 		opened_file_location = fileName;
 		is_freshly = 0;
-		saved_image = image;
+		//saved_image = image;
 	} else {
 		ui->statusBar->showMessage(tr("Can't open Image!"), 2000);
 	}
@@ -226,8 +225,8 @@ void Qtnp::open_file()
 
 bool Qtnp::check_saving()
 {
-	if(saved_image == image) return true;
-	else return false;
+	/*if (saved_image == image) return true;
+	else */return false;
 }
 
 void Qtnp::save_as()
@@ -271,7 +270,7 @@ void Qtnp::save_file_because(QString reason)
 		image->save_image(fileName);
 		ui->statusBar->showMessage(tr("Save completed"), 2000);
 		opened_file_location = fileName;
-		saved_image = image;
+		//saved_image = image;
 		is_freshly = 0;
 		QApplication::restoreOverrideCursor();
 	}

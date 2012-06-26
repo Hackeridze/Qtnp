@@ -63,7 +63,7 @@ private slots:
 	void draw_graphic();
 
 private:
-	QtnpImage *image, *saved_image;
+	QtnpImage *image;
 	QtnpColorWidget *pen_widget, *rpen_widget;
 	QSpinBox *tricksess_box;
 	QPushButton *change_pens_button, *fullscreen_button,
