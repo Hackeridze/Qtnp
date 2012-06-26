@@ -74,7 +74,7 @@ Qtnp::Qtnp(QWidget *parent) :
 	this->ui->scrollArea->setAlignment(Qt::AlignTop);
 	this->setCentralWidget(this->ui->scrollArea);
 
-	resize(1050,850); // меняем размер окна
+	resize(1050,850);
 }
 Qtnp::~Qtnp()
 {
@@ -238,8 +238,8 @@ void Qtnp::save_as()
 void Qtnp::save_file()
 {
 	check_saving();
-	if((is_freshly == 1) || (opened_file_location == "0")) { // если это первый запуск,
-		save_file_because(tr("Where save?")); //	вызываем диалог сохранения файла
+	if((is_freshly == 1) || (opened_file_location == "0")) {
+		save_file_because(tr("Where save?"));
 	} else if(check_saving()) {
 		image->save_image(opened_file_location);
 		ui->statusBar->showMessage(tr("Save completed"), 2000);
@@ -251,7 +251,7 @@ void Qtnp::save_file_because(QString reason)
 {
 	QFileDialog::Options options;
 	QString filter;
-	options |= QFileDialog::DontUseNativeDialog; // недаем юзать стандартный диалог
+	options |= QFileDialog::DontUseNativeDialog;
 	QString fileName = QFileDialog::getSaveFileName(
 	                           this, reason,
 	                           "",
@@ -260,7 +260,7 @@ void Qtnp::save_file_because(QString reason)
 	                           options
 	                           );
 	if(!fileName.isEmpty()) {
-		QApplication::setOverrideCursor(Qt::WaitCursor); // меняем курсор на курсор ДУМАЮ
+		QApplication::setOverrideCursor(Qt::WaitCursor);
 		int length(filter.size());
 		for(int i(length - 1); i > 0; i--) {
 			if(filter[i] != fileName[fileName.size() - length + i]) {
@@ -270,10 +270,10 @@ void Qtnp::save_file_because(QString reason)
 		}
 		image->save_image(fileName);
 		ui->statusBar->showMessage(tr("Save completed"), 2000);
-		opened_file_location = fileName; // сохраняем, в какой файл сохранили
-		saved_image = image; // сохраненное изображение, для последующей проверки
+		opened_file_location = fileName;
+		saved_image = image;
 		is_freshly = 0;
-		QApplication::restoreOverrideCursor(); // возвращаем курсор
+		QApplication::restoreOverrideCursor();
 	}
 
 }
@@ -295,8 +295,8 @@ void Qtnp::add_grid()
 void Qtnp::full_screen()
 {
 	if (is_fullscreen == 0) {
-		this->showFullScreen(); // делаем фалскрин
-		this->ui->menuBar->setVisible(0); // убираем верхнюю
+		this->showFullScreen();
+		this->ui->menuBar->setVisible(0);
 		is_fullscreen = 1;
 	} else {
 		this->showNormal();
@@ -308,10 +308,10 @@ void Qtnp::full_screen()
 void Qtnp::change_pens()
 {
 	QColor buff;
-	buff = image->get_pen_color(1); // получаем цвет правой кноки
-	image->set_rpen_color(image->get_pen_color(0)); // устанавливаем цвет правой как у левой
-	image->set_pen_color(buff); // устанавливаем цвет левой из буфера
-	pen_widget->set_color(buff); // <-+ устанавливаем цвета виджетов смены цвета
+	buff = image->get_pen_color(1);
+	image->set_rpen_color(image->get_pen_color(0));
+	image->set_pen_color(buff);
+	pen_widget->set_color(buff);
 	rpen_widget->set_color(image->get_pen_color(1));
 
 }

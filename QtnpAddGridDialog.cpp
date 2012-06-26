@@ -49,8 +49,8 @@ void QtnpAddGridDialog::ok_clicked(
 {
 	this->setCursor(Qt::WaitCursor);
 	
-	emit add_grid(grid_step, grid_color, grid_width);
-	if (coord_plane) emit add_coord_plane(plane_step, plane_color, plane_width);
+	emit add_grid(grid_step,grid_color,grid_width);
+	if (coord_plane) emit add_coord_plane(plane_step,plane_color,plane_width);
 	this->accept();
 	
 	this->setCursor(Qt::ArrowCursor);
