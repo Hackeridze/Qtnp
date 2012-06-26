@@ -33,7 +33,7 @@ class QtnpColorWidget : public QLabel
 	Q_OBJECT
 public:
 	QtnpColorWidget(int, int, int, int b_s = 30);
-	~QtnpColorWidget() {}
+	~QtnpColorWidget();
 	QColor get_current_color();
 
 private:

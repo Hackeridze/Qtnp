@@ -30,6 +30,13 @@ QtnpColorWidget::QtnpColorWidget(int r, int g, int b, int b_s)
 	setAlignment(Qt::AlignTop);
 }
 
+QtnpColorWidget::~QtnpColorWidget()
+{
+	delete current_color;
+	delete pixmap_color;
+	delete painter_color;
+}
+
 void QtnpColorWidget::set_color(QColor color)
 {
 	*current_color = color;
