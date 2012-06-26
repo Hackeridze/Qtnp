@@ -57,10 +57,9 @@ private:
 	QtnpTool active_tool;
 	QPoint start, end;
 	QImage *image; // lol
+	QImage image_copy;
 	QPen pen, rpen;
 	QBrush brush;
-	QPixmap *image_pixmap;
-	QPixmap image_pixmap_copy;
 	QPainter *painter;
 	QPoint get_grid_point(QPoint gridPoint,int step);
 	QList<QImage> prev_list;

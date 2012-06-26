@@ -47,19 +47,16 @@ QtnpImage::QtnpImage()
 QtnpImage::~QtnpImage()
 {
 	delete image;
-	delete image_pixmap;
 	delete painter;
 }
 
 void QtnpImage::new_image(int x, int y, QColor color)
 {
-	image = new QImage();
-	image_pixmap = new QPixmap(x,y);
-	painter = new QPainter(image_pixmap);
+	image = new QImage(x,y,QImage::Format_ARGB6666_Premultiplied);
+	painter = new QPainter(image);
 	painter->fillRect(0,0, x,y, color);
 	painter->end();
-	setPixmap(*image_pixmap);
-	*image = image_pixmap->toImage();
+	setPixmap(QPixmap::fromImage(*image));
 	height_ = image->height();
 	width_ = image->width();
 	emit reset_tool_menu();
@@ -73,8 +70,7 @@ void QtnpImage::new_image(int x, int y, QColor color)
 void QtnpImage::load_image(const QString ImageFile)
 {
 	image->load(ImageFile);
-	image_pixmap->load(ImageFile);
-	setPixmap(*image_pixmap);
+	setPixmap(QPixmap::fromImage(*image));
 	height_ = image->height();
 	width_ = image->width();
 	emit reset_tool_menu();
@@ -120,13 +116,12 @@ void QtnpImage::grayscale()
 void QtnpImage::save_image(const QString ImageFile)
 {
 	refresh();
-	image_pixmap->save(ImageFile); 
+	image->save(ImageFile); 
 }
 
 void QtnpImage::refresh()
 {
-	*image_pixmap = image_pixmap->fromImage(*image);
-	setPixmap(*image_pixmap);
+	setPixmap(QPixmap::fromImage(*image));
 }
 
 void QtnpImage::mousePressEvent(QMouseEvent *event)
@@ -143,25 +138,25 @@ void QtnpImage::mousePressEvent(QMouseEvent *event)
 		case LINE:
 			painting = 1;
 			remember();
-			image_pixmap_copy = *image_pixmap;
+			image_copy = *image;
 			start = end = event -> pos();
 			break;
 		case SQUARE:
 			painting = 1;
 			remember();
-			image_pixmap_copy = *image_pixmap;
+			image_copy = *image;
 			start = end = event -> pos();
 			break;
 		case ELLIPSE:
 			painting = 1;
 			remember();
-			image_pixmap_copy = *image_pixmap;
+			image_copy = *image;
 			start = end = event -> pos();
 			break;
 		case CIRCLE:
 			painting = 1;
 			remember();
-			image_pixmap_copy = *image_pixmap;
+			image_copy = *image;
 			start = end = event -> pos();
 			break;
 		case JOGGED_LINE:
@@ -174,7 +169,7 @@ void QtnpImage::mousePressEvent(QMouseEvent *event)
 				end = event->pos();
 				draw_line(pen);
 				start = end;
-				image_pixmap_copy = *image_pixmap;
+				image_copy = *image;
 			}
 			break;
 		}
@@ -190,25 +185,25 @@ void QtnpImage::mousePressEvent(QMouseEvent *event)
 		case LINE:
 			painting = 1;
 			remember();
-			image_pixmap_copy = *image_pixmap;
+			image_copy = *image;
 			start = end = event -> pos();
 			break;
 		case SQUARE:
 			painting = 1;
 			remember();
-			image_pixmap_copy = *image_pixmap;
+			image_copy = *image;
 			start = end = event -> pos();
 			break;
 		case ELLIPSE:
 			painting = 1;
 			remember();
-			image_pixmap_copy = *image_pixmap;
+			image_copy = *image;
 			start = end = event -> pos();
 			break;
 		case CIRCLE:
 			painting = 1;
 			remember();
-			image_pixmap_copy = *image_pixmap;
+			image_copy = *image;
 			start = end = event -> pos();
 			break;
 		case JOGGED_LINE:
@@ -231,19 +226,19 @@ void QtnpImage::mouseMoveEvent(QMouseEvent *event)
 			start = end;
 			break;
 		case LINE:
-			*image_pixmap = image_pixmap_copy;
+			*image = image_copy;
 			draw_line(pen);
 			break;
 		case SQUARE:
-			*image_pixmap = image_pixmap_copy;
+			*image = image_copy;
 			draw_square(pen);
 			break;
 		case ELLIPSE:
-			*image_pixmap = image_pixmap_copy;
+			*image = image_copy;
 			draw_ellipse(pen);
 			break;
 		case CIRCLE:
-			*image_pixmap = image_pixmap_copy;
+			*image = image_copy;
 			draw_line(pen);
 			draw_circle(pen);
 			break;
@@ -258,19 +253,19 @@ void QtnpImage::mouseMoveEvent(QMouseEvent *event)
 				start = end;
 				break;
 			case LINE:
-				*image_pixmap = image_pixmap_copy;
+				*image = image_copy;
 				draw_line(rpen);
 				break;
 			case SQUARE:
-				*image_pixmap = image_pixmap_copy;
+				*image = image_copy;
 				draw_square(rpen);
 				break;
 			case ELLIPSE:
-				*image_pixmap = image_pixmap_copy;
+				*image = image_copy;
 				draw_ellipse(rpen);
 				break;
 			case CIRCLE:
-				*image_pixmap = image_pixmap_copy;
+				*image = image_copy;
 				draw_line(rpen);
 				draw_circle(rpen);
 				break;
@@ -290,22 +285,22 @@ void QtnpImage::mouseReleaseEvent(QMouseEvent *event)
 			painting = 0;
 			break;
 		case LINE:
-			*image_pixmap = image_pixmap_copy;
+			*image = image_copy;
 			draw_line(pen);
 			painting = 0;
 			break;
 		case SQUARE:
-			*image_pixmap = image_pixmap_copy;
+			*image = image_copy;
 			draw_square(pen);
 			painting = 0;
 			break;
 		case ELLIPSE:
-			*image_pixmap = image_pixmap_copy;
+			*image = image_copy;
 			draw_ellipse(pen);
 			painting = 0;
 			break;
 		case CIRCLE:
-			*image_pixmap = image_pixmap_copy;
+			*image = image_copy;
 			draw_circle(pen);
 			painting = 0;
 			break;
@@ -320,22 +315,22 @@ void QtnpImage::mouseReleaseEvent(QMouseEvent *event)
 			painting = 0;
 			break;
 		case LINE:
-			*image_pixmap = image_pixmap_copy;
+			*image = image_copy;
 			draw_line(rpen);
 			painting = 0;
 			break;
 		case SQUARE:
-			*image_pixmap = image_pixmap_copy;
+			*image = image_copy;
 			draw_square(rpen);
 			painting = 0;
 			break;
 		case ELLIPSE:
-			*image_pixmap = image_pixmap_copy;
+			*image = image_copy;
 			draw_ellipse(rpen);
 			painting = 0;
 			break;
 		case CIRCLE:
-			*image_pixmap = image_pixmap_copy;
+			*image = image_copy;
 			draw_circle(rpen);
 			painting = 0;
 			break;
@@ -345,37 +340,34 @@ void QtnpImage::mouseReleaseEvent(QMouseEvent *event)
 
 void QtnpImage::draw_line(QPen p)
 {
-	painter->begin(image_pixmap);
+	painter->begin(image);
 	painter->setPen(p);
 	painter->drawLine(start, end);
 	painter->end();
-	setPixmap(*image_pixmap);
-	*image = image_pixmap->toImage();
+	setPixmap(QPixmap::fromImage(*image));
 }
 
 void QtnpImage::draw_square(QPen p)
 {
-	painter->begin(image_pixmap);
+	painter->begin(image);
 	painter->setPen(p);
 	painter->drawRect(QRect(start,end));
 	painter->end();
-	setPixmap(*image_pixmap);
-	*image = image_pixmap->toImage();
+	setPixmap(QPixmap::fromImage(*image));
 }
 
 void QtnpImage::draw_ellipse(QPen p)
 {
-	painter->begin(image_pixmap);
+	painter->begin(image);
 	painter->setPen(p);
 	painter->drawEllipse(QRect(start,end));
 	painter->end();
-	setPixmap(*image_pixmap);
-	*image = image_pixmap->toImage();
+	setPixmap(QPixmap::fromImage(*image));
 }
 
 void QtnpImage::draw_circle(QPen p)
 {
-	painter->begin(image_pixmap);
+	painter->begin(image);
 	painter->setPen(p);
 	int x_R, y_R, x_F, y_F, x_F2, y_F2;
 	x_R = fabs(start.x() - end.x());
@@ -397,8 +389,7 @@ void QtnpImage::draw_circle(QPen p)
 	}
 	painter->drawEllipse(QRect(QPoint(x_F,y_F),QPoint(x_F2,y_F2)));
 	painter->end();
-	setPixmap(*image_pixmap);
-	*image = image_pixmap->toImage();
+	setPixmap(QPixmap::fromImage(*image));
 }
 
 void QtnpImage::set_pen_color(QColor color)
@@ -477,7 +468,7 @@ void QtnpImage::make_grid(int step, QColor color,int width)
 
 	grid_step = step;
 
-	painter->begin(image_pixmap);
+	painter->begin(image);
 	painter->setPen(gridPen);
 
 	for(x=c_x; x<width_; x+=step) {
@@ -495,8 +486,7 @@ void QtnpImage::make_grid(int step, QColor color,int width)
 	}
 
 	painter->end();
-	setPixmap(*image_pixmap);
-	*image = image_pixmap->toImage();
+	setPixmap(QPixmap::fromImage(*image));
 
 	remember();
 	refresh();
@@ -524,7 +514,7 @@ void QtnpImage::make_coord_plane(int CoordPlaneStep, QColor clr, int width)
 	c_end_h = width_*0.973;
 	c_start_h = width_*0.027;
 
-	painter->begin(image_pixmap);
+	painter->begin(image);
 	painter->setPen(coordPlanePen);
 
 	{
@@ -609,8 +599,7 @@ void QtnpImage::make_coord_plane(int CoordPlaneStep, QColor clr, int width)
 	}
 
 	painter->end();
-	setPixmap(*image_pixmap);
-	*image = image_pixmap->toImage();
+	setPixmap(QPixmap::fromImage(*image));
 
 	remember();
 	refresh();
@@ -626,7 +615,7 @@ void QtnpImage::draw_graphic(QString str, QColor color, int width)
 	//cout << globalGridStep << ' ' << str.toStdString() << endl;
 	if (grid_step == -1 || str.isEmpty()) return;
 
-	painter->begin(image_pixmap);
+	painter->begin(image);
 	QPen gpen;
 	gpen.setColor(color);
 	gpen.setWidth(width);
@@ -653,8 +642,7 @@ void QtnpImage::draw_graphic(QString str, QColor color, int width)
 	}
 
 	painter->end();
-	setPixmap(*image_pixmap);
-	*image = image_pixmap->toImage();
+	setPixmap(QPixmap::fromImage(*image));
 
 	remember();
 	refresh();
