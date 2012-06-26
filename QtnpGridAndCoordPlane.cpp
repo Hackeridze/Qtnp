@@ -74,7 +74,7 @@ QtnpGridAndCoordPlane::QtnpGridAndCoordPlane(QWidget *parent) :
 	alternate_width_spin_b->setValue(2);
 	ui->CoordLayout->addWidget(alternate_width_spin_b);
 
-	spacer = new QSpacerItem(1,1,QSizePolicy::Expanding,QSizePolicy::Minimum);
+	QSpacerItem *spacer = new QSpacerItem(1,1,QSizePolicy::Expanding,QSizePolicy::Minimum);
 	ui->CoordLayout->addSpacerItem(spacer);
 
 	connect(width_spin_b,SIGNAL(valueChanged(int)),alternate_width_spin_b,SLOT(setValue(int)));
@@ -94,7 +94,6 @@ QtnpGridAndCoordPlane::~QtnpGridAndCoordPlane() {
 	delete alternate_coord_plane_color_and_width_l;
 	delete plane_color_widget;
 	delete alternate_width_spin_b;
-	delete spacer;
 }
 
 void QtnpGridAndCoordPlane::emit_get_data() {
