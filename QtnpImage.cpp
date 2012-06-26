@@ -21,7 +21,6 @@
 #include <math.h>
 using namespace std;
 
-// виджет изображения и функци изменения оного
 QtnpImage::QtnpImage()
 {
 	new_image(1280,1024,Qt::white);
@@ -33,17 +32,16 @@ QtnpImage::QtnpImage()
 
 	setAlignment(Qt::AlignTop);
 
-	// устанавливаем стандартные цвета карандашей
 	pen.setColor(Qt::black);
 	rpen.setColor(Qt::white);
 
 	brush.setColor(Qt::green);
-	// ДЕЛАЕМ ОКРУГЛЫМ КАРАНДАШ  >(надо прикрутить функцию смены стилей)<
-	pen.setStyle(Qt::SolidLine); // непрерывистая
-	pen.setCapStyle(Qt::RoundCap); // закругленные края
-	pen.setJoinStyle(Qt::RoundJoin); // закругленные соединения
-	rpen.setCapStyle(Qt::RoundCap); // закругленные края
-	rpen.setJoinStyle(Qt::RoundJoin); // закругленные соединения
+
+	pen.setStyle(Qt::SolidLine);
+	pen.setCapStyle(Qt::RoundCap);
+	pen.setJoinStyle(Qt::RoundJoin);
+	rpen.setCapStyle(Qt::RoundCap);
+	rpen.setJoinStyle(Qt::RoundJoin);
 }
 
 QtnpImage::~QtnpImage()
@@ -53,9 +51,6 @@ QtnpImage::~QtnpImage()
 	delete painter;
 }
 
-
-
-// новое изображение
 void QtnpImage::new_image(int x, int y, QColor color)
 {
 	image = new QImage();
@@ -73,9 +68,8 @@ void QtnpImage::new_image(int x, int y, QColor color)
 	c_x = width_/2;
 	c_y = height_/2;
 	grid_step = -1;
-	//resize(pixmap()->size()); // изменяем размер виджета по размеру пиксмапа
 }
-// Загрузка изображения
+
 void QtnpImage::load_image(const QString ImageFile)
 {
 	image->load(ImageFile);
@@ -90,7 +84,7 @@ void QtnpImage::load_image(const QString ImageFile)
 	c_y = height_/2;
 	grid_step = -1;
 }
-// эффект негатива
+
 void QtnpImage::negative()
 {
 	int x,y;
@@ -106,7 +100,7 @@ void QtnpImage::negative()
 	remember();
 	refresh();
 }
-// сепия
+
 void QtnpImage::grayscale()
 {
 	int x,y,r,g,b;
@@ -122,22 +116,21 @@ void QtnpImage::grayscale()
 	 remember();
 	 refresh();
 }
-// сохранение изображения
+
 void QtnpImage::save_image(const QString ImageFile)
 {
-	//imageImage->save(ImageFile);
-	image_pixmap->save(ImageFile); // для верности, лол
+	refresh();
+	image_pixmap->save(ImageFile); 
 }
-// обновить изображение
+
 void QtnpImage::refresh()
 {
 	*image_pixmap = image_pixmap->fromImage(*image);
 	setPixmap(*image_pixmap);
 }
-// обработка клика мыши
+
 void QtnpImage::mousePressEvent(QMouseEvent *event)
 {
-	// обработка левой кнопки
 	if (event->button() == Qt::LeftButton) {
 		switch(active_tool) {
 		case NONE:
@@ -225,7 +218,7 @@ void QtnpImage::mousePressEvent(QMouseEvent *event)
 		}
 	}
 }
-// обработка движения мыши, дабы видеть получаемое изображение
+
 void QtnpImage::mouseMoveEvent(QMouseEvent *event)
 {
 	if ((event->buttons() & Qt::LeftButton) && painting) {
@@ -285,7 +278,6 @@ void QtnpImage::mouseMoveEvent(QMouseEvent *event)
 		}
 }
 
-// обработка отпуска мыши
 void QtnpImage::mouseReleaseEvent(QMouseEvent *event)
 {
 	if (event->button() == Qt::LeftButton && painting) {
@@ -350,7 +342,7 @@ void QtnpImage::mouseReleaseEvent(QMouseEvent *event)
 		}
 	}
 }
-// функция, рисующая линию
+
 void QtnpImage::draw_line(QPen p)
 {
 	painter->begin(image_pixmap);
@@ -360,7 +352,7 @@ void QtnpImage::draw_line(QPen p)
 	setPixmap(*image_pixmap);
 	*image = image_pixmap->toImage();
 }
-// функция, рисующая прямогольник
+
 void QtnpImage::draw_square(QPen p)
 {
 	painter->begin(image_pixmap);
@@ -370,7 +362,7 @@ void QtnpImage::draw_square(QPen p)
 	setPixmap(*image_pixmap);
 	*image = image_pixmap->toImage();
 }
-// функция, рисующая эллипс
+
 void QtnpImage::draw_ellipse(QPen p)
 {
 	painter->begin(image_pixmap);
@@ -380,6 +372,7 @@ void QtnpImage::draw_ellipse(QPen p)
 	setPixmap(*image_pixmap);
 	*image = image_pixmap->toImage();
 }
+
 void QtnpImage::draw_circle(QPen p)
 {
 	painter->begin(image_pixmap);
@@ -408,29 +401,28 @@ void QtnpImage::draw_circle(QPen p)
 	*image = image_pixmap->toImage();
 }
 
-// устаналвивает цвет левой кн. мыши
 void QtnpImage::set_pen_color(QColor color)
 {
 	pen.setColor(color);
 }
-// устаналвивает цвет правой кн. мыши
+
 void QtnpImage::set_rpen_color(QColor color)
 {
 	rpen.setColor(color);
 }
-// устаналвивает цвет бруша
+
 void QtnpImage::set_brush_color(QColor color)
 {
 	pen.setColor(color);
 	pen.setBrush(brush);
 }
-// устанавливаем толщину мыши
+
 void QtnpImage::pen_trickness(int size)
 {
-	pen.setWidth(size); // толщина
+	pen.setWidth(size);
 	rpen.setWidth(size);
 }
-// отмена действия
+
 void QtnpImage::prev(void)
 {
 	if (!(prev_list.size() < 3)) {
@@ -440,14 +432,12 @@ void QtnpImage::prev(void)
 	}
 }
 
-//запоминаем изменения
 void QtnpImage::remember(void)
 {
 	if (prev_list.size() > 7) prev_list.pop_front();
 	prev_list.append(*image);
 }
 
-// выбираем нужный инструмент
 void QtnpImage::set_active_tool(QtnpTool whichTool)
 {
 	active_tool = whichTool;
@@ -455,7 +445,7 @@ void QtnpImage::set_active_tool(QtnpTool whichTool)
 	jogged_line_first_click_done = true;
 	switch(active_tool) {
 	case NONE:
-		this->setCursor(Qt::ArrowCursor); // усатнавливам стандартный курсор для инструмента НИЧЕГО(МВАХАХА)
+		this->setCursor(Qt::ArrowCursor);
 		break;
 	case PEN:
 		this->setCursor(QCursor(QPixmap(":/res/pencil.png")));
@@ -472,7 +462,6 @@ void QtnpImage::set_active_tool(QtnpTool whichTool)
 	}
 }
 
-// возвращает цвет левой кн. если pen=0 и правой если 1
 QColor QtnpImage::get_pen_color(bool pen)
 {
 	if (!pen) return this->pen.color();
@@ -538,13 +527,11 @@ void QtnpImage::make_coord_plane(int CoordPlaneStep, QColor clr, int width)
 	painter->begin(image_pixmap);
 	painter->setPen(coordPlanePen);
 
-	// Крестовина
 	{
 		painter->drawLine(QPoint(c_x,c_start_v),QPoint(c_x,c_end_v));
 		painter->drawLine(QPoint(c_start_h,c_y),QPoint(c_end_h,c_y));
 	}
 
-	// Рисование стрелочек
 	{
 		painter->drawLine(QPoint(c_x,height_*0.027),QPoint(c_x-width_*0.01,height_*(0.037*1.5)));
 		painter->drawLine(QPoint(c_x,height_*0.027),QPoint(c_x+width_*0.01,height_*(0.037*1.5)));
@@ -565,7 +552,6 @@ void QtnpImage::make_coord_plane(int CoordPlaneStep, QColor clr, int width)
 
 	painter->setOpacity(0.65);
 
-	// Метки
 	{
 		int mrk = 0;
 		for (int i = c_x; i < (c_end_h-CoordPlaneStep); i += CoordPlaneStep) {

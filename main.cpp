@@ -21,16 +21,16 @@
 
 int main(int argc, char *argv[]) 
 {
-	QApplication a(argc, argv); // прога
+	QApplication a(argc, argv);
 
-	QSplashScreen *splash = new QSplashScreen; // сплэшскрин
+	QSplashScreen *splash = new QSplashScreen;
 
-	splash->setPixmap(QPixmap(":/res/splash.png")); // грузим из ресов
-	splash->show();// показываем
+	splash->setPixmap(QPixmap(":/res/splash.png")); 
+	splash->show();
 
 	Qt::Alignment bottomLeft = Qt::AlignBottom | Qt::AlignLeft;
 
-	splash->showMessage(QObject::tr("Setting up the main window..."), // пишем сообщения
+	splash->showMessage(QObject::tr("Setting up the main window..."),
 	                    bottomLeft, Qt::black);
 
 	//QTranslator ru;// устанавливаем русский
@@ -38,15 +38,15 @@ int main(int argc, char *argv[])
 	//qApp->installTranslator(&ru); // устанавливаем русский
 	Qtnp mainWindow;
 
-	splash->showMessage(QObject::tr("Making SIGNAL->SLOT connections..."), // пишем сообщения
+	splash->showMessage(QObject::tr("Making SIGNAL->SLOT connections..."),
 	                    bottomLeft, Qt::black);
 	mainWindow.connections();
 
-	splash->showMessage(QObject::tr("Making buttons size normal..."), // пишем сообщения
+	splash->showMessage(QObject::tr("Making buttons size normal..."),
 	                    bottomLeft, Qt::black);
 	mainWindow.buttons_resize();
 
-	splash->showMessage(QObject::tr("Loading status bar..."), // пишем сообщения...
+	splash->showMessage(QObject::tr("Loading status bar..."),
 	                    bottomLeft, Qt::black);
 	mainWindow.load_status_bar();
 

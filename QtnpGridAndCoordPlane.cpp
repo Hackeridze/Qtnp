@@ -98,10 +98,11 @@ QtnpGridAndCoordPlane::~QtnpGridAndCoordPlane() {
 
 void QtnpGridAndCoordPlane::emit_get_data() {
 	emit get_data(grid_color_widget->get_current_color(),
-				 step_spin_b->value(),width_spin_b->value(),
-				 ui->CoordPlaneGB->isChecked(),
-				 plane_color_widget->get_current_color(),
-				 alternate_width_spin_b->value(), step_grid_spin_b->value());
+	              step_spin_b->value(),width_spin_b->value(),
+	              ui->CoordPlaneGB->isChecked(),
+	              plane_color_widget->get_current_color(),
+	              alternate_width_spin_b->value(),
+	              step_grid_spin_b->value());
 }
 
 void QtnpGridAndCoordPlane::make_grid_checkable() {

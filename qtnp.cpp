@@ -18,7 +18,7 @@
 #include "qtnp.h"
 #include "ui_qtnp.h"
 
-#define NORMAL_BUTTON_SIZE 33 // норм размер кнопок
+#define NORMAL_BUTTON_SIZE 33
 
 Qtnp::Qtnp(QWidget *parent) :
         QMainWindow(parent),
@@ -26,13 +26,12 @@ Qtnp::Qtnp(QWidget *parent) :
 {
 	ui->setupUi(this);
 	is_fullscreen = 0;
-	image = new QtnpImage; // новый виджет изображения
-	saved_image = new QtnpImage; // сохраненное изображение
+	image = new QtnpImage;
+	saved_image = new QtnpImage;
 	saved_image = image;
-	opened_file_location = "0"; // путь и имя открытого файла
+	opened_file_location = "0";
 	is_freshly = 1;
 
-	// виджеты смены цвета кнопок
 	rpen_widget = new QtnpColorWidget(255,255,255);
 	rpen_widget->setStatusTip(tr("Right pen color!"));
 	pen_widget = new QtnpColorWidget(0,0,0);
@@ -94,7 +93,7 @@ Qtnp::~Qtnp()
 	delete change_pens_button;
 	delete fullscreen_button;
 }
-// обработка попытки закрыть окно
+
 void Qtnp::closeEvent(QCloseEvent *event)
 {
 	if (check_saving()) {
@@ -150,7 +149,6 @@ void Qtnp::load_status_bar()
 	this->ui->statusBar->addPermanentWidget(fullscreen_button);
 }
 
-// устанавливаем нормальный размер лажи и иконки
 void Qtnp::buttons_resize()
 {
 	tricksess_box->setFixedSize(NORMAL_BUTTON_SIZE+20,NORMAL_BUTTON_SIZE);
@@ -168,7 +166,7 @@ void Qtnp::buttons_resize()
 	draw_graphic_button->setFixedSize(QSize(NORMAL_BUTTON_SIZE,NORMAL_BUTTON_SIZE));
 	prev_button->setIconSize(QSize(NORMAL_BUTTON_SIZE,NORMAL_BUTTON_SIZE));
 	prev_button->setFixedSize(QSize(NORMAL_BUTTON_SIZE-1,NORMAL_BUTTON_SIZE));
-	// устанавливаем иконки
+
 	ui->actionSave->setIcon(QIcon(":/res/save.png"));
 	ui->actionSave_as->setIcon(QIcon(":/res/save_as.png"));
 	ui->actionNew->setIcon(QIcon(":/res/new.png"));
@@ -201,17 +199,16 @@ void Qtnp::about()
 	                      ));
 }
 
-// Создание нового файла
 void Qtnp::new_file()
 {
-	new_file_dialog = new QtnpNewFileDialog(this);// создаем окно создания нового файла
+	new_file_dialog = new QtnpNewFileDialog(this);
 	connect(new_file_dialog,SIGNAL(new_image(int,int,QColor)),image,SLOT(new_image(int,int,QColor)));
 	connect(new_file_dialog,SIGNAL(add_grid(int,QColor,int)),image,SLOT(make_grid(int,QColor,int)));
 	connect(new_file_dialog,SIGNAL(add_coord_plane(int,QColor,int)),image,SLOT(make_coord_plane(int,QColor,int)));
 	new_file_dialog->show();
 	saved_image = image;
 }
-// Открытие файла
+
 void Qtnp::open_file()
 {
 	QString fileName = QFileDialog::getOpenFileName(this, tr("Open Image..."));
@@ -223,7 +220,7 @@ void Qtnp::open_file()
 		is_freshly = 0;
 		saved_image = image;
 	} else {
-		ui->statusBar->showMessage(tr("Can't open Image!"), 2000);  // такое
+		ui->statusBar->showMessage(tr("Can't open Image!"), 2000);
 	}
 }
 
@@ -232,12 +229,12 @@ bool Qtnp::check_saving()
 	if(saved_image == image) return true;
 	else return false;
 }
-// вызывает Сохранить как с нужным заголовком
+
 void Qtnp::save_as()
 {
 	save_file_because(tr("Save current image as..."));
 }
-// сохраняет файл
+
 void Qtnp::save_file()
 {
 	check_saving();
@@ -250,7 +247,6 @@ void Qtnp::save_file()
 	ui->statusBar->showMessage(tr("Save earlier"), 2000);
 }
 
-// вызывает диалог сохранения файла с нужным заголовком
 void Qtnp::save_file_because(QString reason)
 {
 	QFileDialog::Options options;
@@ -282,7 +278,6 @@ void Qtnp::save_file_because(QString reason)
 
 }
 
-// обработка нажатия Exit из меню File
 void Qtnp::exit_clicked()
 {
 	this->close();
@@ -328,7 +323,6 @@ void Qtnp::draw_graphic()
 	draw_graphic_dialog->show();
 }
 
-// ФУНКЦИИ СТАНОВКИ ТУЛЗОВ
 void Qtnp::set_tool_NONE()
 {
 	image->set_active_tool(NONE);

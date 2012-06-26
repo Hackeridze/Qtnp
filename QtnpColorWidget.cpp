@@ -20,11 +20,11 @@
 QtnpColorWidget::QtnpColorWidget(int r, int g, int b, int b_s)
 {
 	box_size = b_s;
-	setFrameStyle(QFrame::Box | QFrame::Raised);// квадратный и выпуклый фрейм
+	setFrameStyle(QFrame::Box | QFrame::Raised);
 	current_color = new QColor(r,g,b);
 	pixmap_color = new QPixmap(box_size, box_size);
 	painter_color = new QPainter(pixmap_color);
-	painter_color->fillRect(0,0,box_size,box_size, *current_color);
+	painter_color->fillRect(0, 0, box_size, box_size, *current_color);
 	painter_color->end();
 	setPixmap(*pixmap_color);
 	setAlignment(Qt::AlignTop);
@@ -50,10 +50,10 @@ void QtnpColorWidget::set_color(QColor color)
 void QtnpColorWidget::mousePressEvent(QMouseEvent *event)
 {
 	if(event->button() == Qt::LeftButton) {
-		clr = QColorDialog::getColor(*current_color, this); // вызываем стд диалог выбора цвета
+		clr = QColorDialog::getColor(*current_color, this);
 		if(clr.isValid()) {
-			set_color(clr); // устанавливаем выбранный цвет для самого виджета
-			emit send_color(clr); // отсылаем цвет
+			set_color(clr);
+			emit send_color(clr);
 		}
 	}
 }

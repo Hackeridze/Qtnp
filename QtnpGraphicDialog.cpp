@@ -40,7 +40,7 @@ QtnpGraphicDialog::~QtnpGraphicDialog()
 
 void QtnpGraphicDialog::ok_clicked()
 {
-	this->setCursor(Qt::WaitCursor);// Может занять время =\
+	this->setCursor(Qt::WaitCursor);
 
 	emit get_data(ui->formula->text(),
 	              line_color_widget->get_current_color(),
