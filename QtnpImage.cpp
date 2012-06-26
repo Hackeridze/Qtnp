@@ -52,7 +52,7 @@ QtnpImage::~QtnpImage()
 
 void QtnpImage::new_image(int x, int y, QColor color)
 {
-	image = new QImage(x,y,QImage::Format_ARGB6666_Premultiplied);
+	image = new QImage(x,y,QImage::Format_RGB32);
 	painter = new QPainter(image);
 	painter->fillRect(0,0, x,y, color);
 	painter->end();
