@@ -50,7 +50,7 @@ int main(int argc, char *argv[])
 	                    bottomLeft, Qt::black);
 	mainWindow.load_status_bar();
 
-	qApp->setStyle("cleanlooks");
+	//qApp->setStyle("cleanlooks");
 
 	mainWindow.showMaximized();
 	splash->finish(&mainWindow);
