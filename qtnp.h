@@ -52,7 +52,6 @@ private slots:
 	void save_as(void);
 	void save_file_because(QString reason);
 	void open_file();
-	bool check_saving();
 	void add_grid();
 	void set_tool_NONE();
 	void set_tool_PEN();
@@ -76,7 +75,7 @@ private:
 	QtnpNewFileDialog *new_file_dialog;
 	QtnpAddGridDialog *add_grid_dialog;
 	QtnpGraphicDialog *draw_graphic_dialog;
-	bool is_fullscreen,/* is_saved, isSomeResOpenned,*/is_freshly;
+	bool is_fullscreen;
 	QString opened_file_location;
 
 	QHBoxLayout *l;

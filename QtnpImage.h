@@ -56,7 +56,7 @@ private:
 	bool painting, jogged_line_first_click_done;
 	QtnpTool active_tool;
 	QPoint start, end;
-	QImage *image; // lol
+	QImage *image;
 	QImage image_copy;
 	QPen pen, rpen;
 	QBrush brush;

@@ -25,13 +25,12 @@ Qtnp::Qtnp(QWidget *parent) :
         ui(new Ui::Qtnp)
 {
 	statusbar_clock = new digital_clock;
-	
+
 	ui->setupUi(this);
 	is_fullscreen = 0;
 	image = new QtnpImage;
 
 	opened_file_location = "0";
-	is_freshly = 1;
 
 	rpen_widget = new QtnpColorWidget(255,255,255);
 	rpen_widget->setStatusTip(tr("Right pen color!"));
@@ -84,7 +83,6 @@ Qtnp::~Qtnp()
 	delete tricksess_box;
 	delete pen_widget;
 	delete rpen_widget;
-	//delete savedImage;
 	//delete tricksessBox;
 	delete prev_button;
 	delete new_file_button;
@@ -98,12 +96,8 @@ Qtnp::~Qtnp()
 
 void Qtnp::closeEvent(QCloseEvent *event)
 {
-	if (check_saving()) {
-		event->accept();
-	} else {
-		save_file_because(tr("Save before closing?"));
-		event->accept();
-	}
+	save_file_because(tr("Save before closing?"));
+	event->accept();
 }
 
 void Qtnp::connections()
@@ -209,7 +203,6 @@ void Qtnp::new_file()
 	connect(new_file_dialog,SIGNAL(add_grid(int,QColor,int)),image,SLOT(make_grid(int,QColor,int)));
 	connect(new_file_dialog,SIGNAL(add_coord_plane(int,QColor,int)),image,SLOT(make_coord_plane(int,QColor,int)));
 	new_file_dialog->show();
-	//saved_image = image;
 }
 
 void Qtnp::open_file()
@@ -220,17 +213,9 @@ void Qtnp::open_file()
 		ui->statusBar->showMessage(tr("Image openned!"), 2000);
 		image->resize(image->pixmap()->size());
 		opened_file_location = fileName;
-		is_freshly = 0;
-		//saved_image = image;
 	} else {
 		ui->statusBar->showMessage(tr("Can't open Image!"), 2000);
 	}
-}
-
-bool Qtnp::check_saving()
-{
-	/*if (saved_image == image) return true;
-	else */return false;
 }
 
 void Qtnp::save_as()
@@ -240,10 +225,9 @@ void Qtnp::save_as()
 
 void Qtnp::save_file()
 {
-	check_saving();
-	if((is_freshly == 1) || (opened_file_location == "0")) {
+	if(opened_file_location == "0") {
 		save_file_because(tr("Where save?"));
-	} else if(check_saving()) {
+	} else {
 		image->save_image(opened_file_location);
 		ui->statusBar->showMessage(tr("Save completed"), 2000);
 	}
@@ -274,11 +258,8 @@ void Qtnp::save_file_because(QString reason)
 		image->save_image(fileName);
 		ui->statusBar->showMessage(tr("Save completed"), 2000);
 		opened_file_location = fileName;
-		//saved_image = image;
-		is_freshly = 0;
 		QApplication::restoreOverrideCursor();
 	}
-
 }
 
 void Qtnp::exit_clicked()
@@ -292,7 +273,6 @@ void Qtnp::add_grid()
 	connect(add_grid_dialog,SIGNAL(add_grid(int,QColor,int)),image,SLOT(make_grid(int,QColor,int)));
 	connect(add_grid_dialog,SIGNAL(add_coord_plane(int,QColor,int)),image,SLOT(make_coord_plane(int,QColor,int)));
 	add_grid_dialog->show();
-
 }
 
 void Qtnp::full_screen()
@@ -316,7 +296,6 @@ void Qtnp::change_pens()
 	image->set_pen_color(buff);
 	pen_widget->set_color(buff);
 	rpen_widget->set_color(image->get_pen_color(1));
-
 }
 
 void Qtnp::draw_graphic()
