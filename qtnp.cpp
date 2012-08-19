@@ -24,7 +24,7 @@ Qtnp::Qtnp(QWidget *parent) :
         QMainWindow(parent),
         ui(new Ui::Qtnp)
 {
-	statusbar_clock = new digital_clock;
+	statusbar_clock = new digital_clock(this);
 
 	ui->setupUi(this);
 	is_fullscreen = 0;
@@ -37,23 +37,23 @@ Qtnp::Qtnp(QWidget *parent) :
 	pen_widget = new QtnpColorWidget(0,0,0);
 	pen_widget->setStatusTip(tr("Pen color!"));
 
-	tricksess_box = new QSpinBox;
+	tricksess_box = new QSpinBox(this);
 	tricksess_box->setRange(1,200);
 	tricksess_box->setValue(1);
 
-	prev_button = new QPushButton;
+	prev_button = new QPushButton(this);
 	prev_button->setIcon(QIcon(":/res/prev.png"));
 	prev_button->setStatusTip(tr("Previous!"));
 
-	new_file_button = new QPushButton;
+	new_file_button = new QPushButton(this);
 	new_file_button->setIcon(QIcon(":/res/new.png"));
 	new_file_button->setStatusTip(tr("New!"));
 
-	add_grid_button = new QPushButton;
+	add_grid_button = new QPushButton(this);
 	add_grid_button->setIcon(QIcon(":/res/grid.png"));
 	add_grid_button->setStatusTip(tr("Grid!"));
 
-	draw_graphic_button = new QPushButton;
+	draw_graphic_button = new QPushButton(this);
 	draw_graphic_button->setIcon(QIcon(":/res/graphic.png"));
 	draw_graphic_button->setStatusTip(tr("graphic!"));
 
@@ -61,13 +61,17 @@ Qtnp::Qtnp(QWidget *parent) :
 	tools_menu = new QtnpMenuWidget;
 	tools_menu->setStatusTip(tr("Tools"));
 
-	change_pens_button = new QPushButton;
+	change_pens_button = new QPushButton(this);
 	change_pens_button->setIcon(QIcon(":/res/change_pens_ico.png"));
 	change_pens_button->setStatusTip(tr("Change your pens!"));
 
-	fullscreen_button = new QPushButton;
+	fullscreen_button = new QPushButton(this);
 	fullscreen_button->setIcon(QIcon(":/res/fullscreen.png"));
 	fullscreen_button->setStatusTip(tr("MAAAX!"));
+
+	sticky_draw_check_box = new QCheckBox(this);
+	sticky_draw_check_box->setText(tr("Stick to points"));
+	sticky_draw_check_box->setChecked(false);
 
 	this->ui->scrollArea->setWidget(image);
 	this->ui->scrollArea->setBackgroundRole(QPalette::Dark);
@@ -129,6 +133,7 @@ void Qtnp::connections()
 	connect(prev_button,SIGNAL(clicked()),image,SLOT(prev()));
 	connect(image,SIGNAL(reset_tool_menu()),tools_menu,SLOT(none()));
 	connect(tools_menu,SIGNAL(choosen_tool(QtnpTool)),image,SLOT(set_active_tool(QtnpTool)));
+	connect(sticky_draw_check_box,SIGNAL(clicked(bool)),image,SLOT(set_sticky(bool)));
 }
 
 void Qtnp::load_status_bar()
@@ -139,6 +144,7 @@ void Qtnp::load_status_bar()
 	this->ui->statusBar->addPermanentWidget(draw_graphic_button);
 	this->ui->statusBar->addPermanentWidget(prev_button);
 	this->ui->statusBar->addPermanentWidget(tools_menu);
+	this->ui->statusBar->addPermanentWidget(sticky_draw_check_box);
 	this->ui->statusBar->addPermanentWidget(pen_widget);
 	this->ui->statusBar->addPermanentWidget(rpen_widget);
 	this->ui->statusBar->addPermanentWidget(change_pens_button);
@@ -300,7 +306,7 @@ void Qtnp::change_pens()
 
 void Qtnp::draw_graphic()
 {
-	draw_graphic_dialog = new QtnpGraphicDialog;
+	draw_graphic_dialog = new QtnpGraphicDialog(this);
 	connect(draw_graphic_dialog,SIGNAL(get_data(QString,QColor,int)),image,SLOT(draw_graphic(QString,QColor,int)));
 	draw_graphic_dialog->show();
 }

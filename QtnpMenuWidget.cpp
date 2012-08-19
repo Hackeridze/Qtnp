@@ -19,7 +19,7 @@
 
 QtnpMenuWidget::QtnpMenuWidget()
 {
-	m = new QMenu;
+	m = new QMenu(this);
 	this->setMenu(m);
 
 	m->addAction(QIcon(":/res/cursor.png"),tr("Cursor"),this,SLOT(none()));

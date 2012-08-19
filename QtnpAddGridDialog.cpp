@@ -24,7 +24,7 @@ QtnpAddGridDialog::QtnpAddGridDialog(QWidget *parent) :
 {
 	ui->setupUi(this);
 
-	grid_and_plane_widget = new QtnpGridAndCoordPlane;
+	grid_and_plane_widget = new QtnpGridAndCoordPlane(this);
 	ui->WL->addWidget(grid_and_plane_widget);
 
 	connect(ui->okButton,SIGNAL(clicked()),grid_and_plane_widget,SLOT(emit_get_data()));

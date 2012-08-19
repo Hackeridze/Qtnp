@@ -19,6 +19,9 @@
 #include "fparser/fparser.h"
 #include <iostream>
 #include <math.h>
+#include <QDebug>
+#include <QPair>
+
 using namespace std;
 
 QtnpImage::QtnpImage()
@@ -29,6 +32,8 @@ QtnpImage::QtnpImage()
 	grid_max_y = 0;
 	grid_min_x = 0;
 	grid_min_y = 0;
+	
+	sticking = false;
 
 	setAlignment(Qt::AlignTop);
 
@@ -342,7 +347,9 @@ void QtnpImage::draw_line(QPen p)
 {
 	painter->begin(image);
 	painter->setPen(p);
-	painter->drawLine(start, end);
+	if (sticking)
+		painter->drawLine(closest_grid_point(start), closest_grid_point(end));
+	else painter->drawLine(start, end);
 	painter->end();
 	setPixmap(QPixmap::fromImage(*image));
 }
@@ -351,7 +358,9 @@ void QtnpImage::draw_square(QPen p)
 {
 	painter->begin(image);
 	painter->setPen(p);
-	painter->drawRect(QRect(start,end));
+	if (sticking)
+		painter->drawRect(QRect(closest_grid_point(start), closest_grid_point(end)));
+	else painter->drawRect(QRect(start, end));
 	painter->end();
 	setPixmap(QPixmap::fromImage(*image));
 }
@@ -360,7 +369,9 @@ void QtnpImage::draw_ellipse(QPen p)
 {
 	painter->begin(image);
 	painter->setPen(p);
-	painter->drawEllipse(QRect(start,end));
+	if (sticking)
+		painter->drawEllipse(QRect(closest_grid_point(start), closest_grid_point(end)));
+	else painter->drawEllipse(QRect(start, end));
 	painter->end();
 	setPixmap(QPixmap::fromImage(*image));
 }
@@ -387,7 +398,9 @@ void QtnpImage::draw_circle(QPen p)
 		y_F = start.y() - R;
 		y_F2 = start.y() + R;
 	}
-	painter->drawEllipse(QRect(QPoint(x_F,y_F),QPoint(x_F2,y_F2)));
+	if (sticking)
+		painter->drawEllipse(QRect(closest_grid_point(QPoint(x_F,y_F)), closest_grid_point(QPoint(x_F2,y_F2))));
+	else painter->drawEllipse(QRect(QPoint(x_F,y_F), QPoint(x_F2,y_F2)));
 	painter->end();
 	setPixmap(QPixmap::fromImage(*image));
 }
@@ -427,6 +440,37 @@ void QtnpImage::remember(void)
 {
 	if (prev_list.size() > 7) prev_list.pop_front();
 	prev_list.append(*image);
+}
+
+QPoint QtnpImage::closest_grid_point(QPoint p)
+{
+	double x,y;
+
+	if (p.x() > c_x)
+		x = (p.x()-c_x)/grid_step;
+	else if (p.x() < c_x)
+		x = -1*(c_x-p.x())/grid_step;
+	else 
+		x = 0;
+
+	if (p.y() > c_y)
+		y = -1*(p.y()-c_y)/grid_step;
+	else if (p.y() < c_y)
+		y = (c_y-p.y())/grid_step;
+	else 
+		y = 0;
+
+	return get_grid_point_coordinates(QPoint(round(x),round(y)), grid_step);
+}
+
+int QtnpImage::round(double num)
+{
+//	int mul = 10;
+//	if (num > 0)
+//		return floor(num * mul + .5) / mul;
+//	else
+//		return ceil(num * mul - .5) / mul;
+	return nearbyint(num);
 }
 
 void QtnpImage::set_active_tool(QtnpTool whichTool)
@@ -605,7 +649,7 @@ void QtnpImage::make_coord_plane(int CoordPlaneStep, QColor clr, int width)
 	refresh();
 }
 
-QPoint QtnpImage::get_grid_point(QPoint gPoint, int step)
+QPoint QtnpImage::get_grid_point_coordinates(QPoint gPoint, int step)
 {
 	return QPoint(c_x+step*gPoint.x(), c_y-step*gPoint.y());
 }
@@ -626,25 +670,46 @@ void QtnpImage::draw_graphic(QString str, QColor color, int width)
 	QtnpParser fparser;
 	fparser.setE(str.toStdString());
 	
-	int i = grid_min_x;
-	QPoint buf(grid_min_x, fparser.getR(i));
-	QPoint fpoint;
-	QPoint spoint = get_grid_point(buf,grid_step);
-
-	for (; i < grid_max_x; i += 1) {
-		fpoint = spoint;
-		buf.setX(i);;
-		buf.setY(fparser.getR(i));
-		//cout << buf.x() << ' ' << buf.y() << endl;
-		spoint = get_grid_point(buf,grid_step);
-		painter->drawLine(QPoint(fpoint.x(),fpoint.y()),QPoint(spoint.x(),spoint.y()));
-		//cout << fpoint.x << ' ' << fpoint.y << endl;
+	double i = grid_min_x;
+	double p_x, p_y, s_x, s_y, b_x, b_y;
+	
+	b_x = grid_min_x;
+	b_y = fparser.getR(i);
+	
+	s_x = c_x+grid_step*b_x;
+	s_y = c_y-grid_step*b_y;
+	
+	QPolygon grphc;
+	grphc.append(QPoint(nearbyint(s_x),nearbyint(s_y)));
+	
+	for (; i < grid_max_x; i += 0.05) {
+		p_x = s_x;
+		p_y = s_y;
+		b_x = i;
+		b_y = fparser.getR(i);
+		s_x = c_x+grid_step*b_x;
+		s_y = c_y-grid_step*b_y;
+//		painter->drawLine(
+//		                  QPoint(nearbyint(p_x),nearbyint(p_y)),
+//		                  QPoint(nearbyint(s_x),nearbyint(s_y))
+//		                        );
+		//grphc.append(QPoint(nearbyint(p_x),nearbyint(p_y)));
+		grphc.append(QPoint(nearbyint(s_x),nearbyint(s_y)));
 	}
+	
+	//painter->drawLines(lines);
+	painter->setRenderHint(QPainter::Antialiasing);
+	painter->drawPolyline(grphc);
 
 	painter->end();
 	setPixmap(QPixmap::fromImage(*image));
 
 	remember();
 	refresh();
+}
+
+void QtnpImage::set_sticky(bool ans)
+{
+	sticking = ans;
 }
 

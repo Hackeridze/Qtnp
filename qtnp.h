@@ -67,6 +67,7 @@ private:
 	QtnpImage *image;
 	QtnpColorWidget *pen_widget, *rpen_widget;
 	QSpinBox *tricksess_box;
+	QCheckBox *sticky_draw_check_box;
 	QPushButton *change_pens_button, *fullscreen_button,
 	*new_file_button, *add_grid_button,
 	*draw_graphic_button,*prev_button;

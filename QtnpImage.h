@@ -50,10 +50,11 @@ private:
 	void draw_ellipse(QPen p);
 	void draw_circle(QPen p);
 	void remember();
-	QPoint neares_grid_point(QPoint p);
+	QPoint closest_grid_point(QPoint p);
+	int round(double num);
 
 	int width_, height_;
-	bool painting, jogged_line_first_click_done;
+	bool painting, jogged_line_first_click_done, sticking;
 	QtnpTool active_tool;
 	QPoint start, end;
 	QImage *image;
@@ -61,7 +62,7 @@ private:
 	QPen pen, rpen;
 	QBrush brush;
 	QPainter *painter;
-	QPoint get_grid_point(QPoint gridPoint,int step);
+	QPoint get_grid_point_coordinates(QPoint gridPoint,int step);
 	QList<QImage> prev_list;
 	int c_x, c_y;
 	int grid_max_x, grid_max_y, grid_min_x, grid_min_y;
@@ -80,6 +81,7 @@ public slots:
 	void make_grid(int step, QColor color,int width = 1);
 	void make_coord_plane(int CoordPlaneStep, QColor clr,int width = 1);
 	void draw_graphic(QString str, QColor color, int width);
+	void set_sticky(bool ans);
 
 signals:
 	void reset_tool_menu();

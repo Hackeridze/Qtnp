@@ -27,34 +27,34 @@ QtnpGridAndCoordPlane::QtnpGridAndCoordPlane(QWidget *parent) :
 	ui->gridGB->setLayout(ui->GridLayout);
 	ui->CoordPlaneGB->setLayout(ui->CoordLayout);
 
-	step_l = new QLabel;
+	step_l = new QLabel(this);
 	step_l->setText(tr("Step:"));
 	ui->GridLayout->addWidget(step_l);
 
-	step_spin_b = new QSpinBox;
+	step_spin_b = new QSpinBox(this);
 	step_spin_b->setMinimum(3);
 	step_spin_b->setMaximum(9999);
 	step_spin_b->setValue(30);
 	ui->GridLayout->addWidget(step_spin_b);
 
-	color_and_width_l = new QLabel;
+	color_and_width_l = new QLabel(this);
 	color_and_width_l->setText(tr("Color and width:"));
 	ui->GridLayout->addWidget(color_and_width_l);
 
 	grid_color_widget = new QtnpColorWidget(0,0,0,20);
 	ui->GridLayout->addWidget(grid_color_widget);
 
-	width_spin_b = new QSpinBox;
+	width_spin_b = new QSpinBox(this);
 	width_spin_b->setMinimum(1);
 	width_spin_b->setMaximum(999);
 	width_spin_b->setValue(1);
 	ui->GridLayout->addWidget(width_spin_b);
 
-	step_grid_l = new QLabel;
+	step_grid_l = new QLabel(this);
 	step_grid_l->setText(tr("Step:"));
 	ui->CoordLayout->addWidget(step_grid_l);
 
-	step_grid_spin_b = new QSpinBox;
+	step_grid_spin_b = new QSpinBox(this);
 	step_grid_spin_b->setMinimum(3);
 	step_grid_spin_b->setMaximum(9999);
 	step_grid_spin_b->setValue(30);
@@ -68,7 +68,7 @@ QtnpGridAndCoordPlane::QtnpGridAndCoordPlane(QWidget *parent) :
 	plane_color_widget = new QtnpColorWidget(0,0,0,20);
 	ui->CoordLayout->addWidget(plane_color_widget);
 
-	alternate_width_spin_b = new QSpinBox;
+	alternate_width_spin_b = new QSpinBox(this);
 	alternate_width_spin_b->setMinimum(1);
 	alternate_width_spin_b->setMaximum(999);
 	alternate_width_spin_b->setValue(2);
