@@ -27,7 +27,6 @@
 namespace Ui {
 class QtnpGridAndCoordPlane;
 }
-// Виджет для выбора сетки и координатной плоскости
 class QtnpGridAndCoordPlane : public QWidget {
 	Q_OBJECT
 
@@ -38,16 +37,17 @@ public:
 	bool is_checked();
 
 public slots:
-	void emit_get_data(); // Вызывает сигнал передачи данных из виджета
+	void emit_get_data();
 
 signals:
 	void get_data(QColor grid_color,
-		      int grid_step,
-		      int grid_width,
-		      bool coord_plane,
-		      QColor plane_color,
-		      int plane_width,
-		      int plane_step);
+	              int grid_step,
+	              int grid_width,
+	              bool coord_plane,
+	              QColor plane_color,
+	              int plane_width,
+	              int plane_step
+	              );
 
 private:
 	Ui::QtnpGridAndCoordPlane *ui;
