@@ -83,7 +83,7 @@ void QtnpNewFileDialog::ok_clicked(QColor gridColor,
 	               ui->heightSpinBox->value(), 
 	               Qt::white);
 
-	if (GridAndCoordWidget->is_checkable()) {
+	if (GridAndCoordWidget->is_checked()) {
 		emit add_grid(gridStep,gridColor,gridWidth);
 		if (coordPlane)
 			emit add_coord_plane(planeStep,planeColor,planeWidth);

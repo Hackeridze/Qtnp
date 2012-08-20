@@ -108,10 +108,11 @@ void QtnpGridAndCoordPlane::emit_get_data() {
 void QtnpGridAndCoordPlane::make_grid_checkable() {
 	ui->gridGB->setCheckable(true);
 	ui->gridGB->setChecked(false);
+	ui->CoordPlaneGB->setEnabled(false);
 	connect(ui->gridGB,SIGNAL(toggled(bool)),ui->CoordPlaneGB,SLOT(setEnabled(bool)));
 }
 
-bool QtnpGridAndCoordPlane::is_checkable() {
+bool QtnpGridAndCoordPlane::is_checked() {
 	if (ui->gridGB->isChecked()) return true;
 	else return false;
 }

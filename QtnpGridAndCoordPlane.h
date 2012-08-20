@@ -35,7 +35,7 @@ public:
 	explicit QtnpGridAndCoordPlane(QWidget *parent = 0);
 	~QtnpGridAndCoordPlane();
 	void make_grid_checkable();
-	bool is_checkable();
+	bool is_checked();
 
 public slots:
 	void emit_get_data(); // Вызывает сигнал передачи данных из виджета
