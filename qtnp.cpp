@@ -70,7 +70,7 @@ Qtnp::Qtnp(QWidget *parent) :
 	fullscreen_button->setStatusTip(tr("MAAAX!"));
 
 	sticky_draw_check_box = new QCheckBox(this);
-	sticky_draw_check_box->setText(tr("Stick to points"));
+	sticky_draw_check_box->setStatusTip(tr("Stick to web's points"));
 	sticky_draw_check_box->setChecked(false);
 
 	this->ui->scrollArea->setWidget(image);
