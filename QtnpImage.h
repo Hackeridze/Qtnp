@@ -45,6 +45,7 @@ protected:
 
 private:
 	void refresh();
+	void clear_old_image();
 	void draw_line(QPen p);
 	void draw_square(QPen p);
 	void draw_ellipse(QPen p);
@@ -54,7 +55,7 @@ private:
 	int round(double num);
 
 	int width_, height_;
-	bool painting, jogged_line_first_click_done, sticking;
+	bool painting, jogged_line_first_click_done, sticking, wrong_exp;
 	QtnpTool active_tool;
 	QPoint start, end;
 	QImage *image;
@@ -82,9 +83,11 @@ public slots:
 	void make_coord_plane(int CoordPlaneStep, QColor clr,int width = 1);
 	void draw_graphic(QString str, QColor color, int width);
 	void set_sticky(bool ans);
+	void bad_graphic_exp();
 
 signals:
 	void reset_tool_menu();
+	void bad_graphic_exp_error();
 };
 
 #endif // QTNPIMAGE

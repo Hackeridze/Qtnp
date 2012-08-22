@@ -19,18 +19,22 @@
 #define FPARSER_H
 
 #include "muparser/muParser.h"
-#include <string>
+#include <QString>
+#include <QObject>
 
 using namespace mu;
 
-class QtnpParser
+class QtnpParser : public QObject
 {
+	Q_OBJECT
 private:
 	Parser p;
 public:
 	QtnpParser();
-	void setE(std::string str);
+	void setE(QString str);
 	double getR(value_type x);
+signals:
+	void bad_exp();
 };
 
 #endif // FPARSER_H

@@ -24,7 +24,7 @@ QtnpGraphicDialog::QtnpGraphicDialog(QWidget *parent) :
 {
 	ui->setupUi(this);
 	line_color_widget = new QtnpColorWidget(0,0,0,24);
-	QSpacerItem *prop_spacer = new QSpacerItem(1,1,QSizePolicy::Expanding,QSizePolicy::Minimum);
+	prop_spacer = new QSpacerItem(1,1,QSizePolicy::Expanding,QSizePolicy::Minimum);
 
 	ui->propLayout->addWidget(line_color_widget);
 	ui->propLayout->addSpacerItem(prop_spacer);
@@ -34,6 +34,8 @@ QtnpGraphicDialog::QtnpGraphicDialog(QWidget *parent) :
 
 QtnpGraphicDialog::~QtnpGraphicDialog()
 {
+	prop_spacer->~QLayoutItem();
+	//delete prop_spacer;
 	delete ui;
 	delete line_color_widget;
 }
@@ -48,4 +50,5 @@ void QtnpGraphicDialog::ok_clicked()
 	this->accept();
 
 	this->setCursor(Qt::ArrowCursor);
+	this->deleteLater();
 }

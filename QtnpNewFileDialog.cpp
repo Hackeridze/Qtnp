@@ -25,7 +25,7 @@ QtnpNewFileDialog::QtnpNewFileDialog(QWidget *parent) :
 	ui->setupUi(this);
 
 
-	GridAndCoordWidget = new QtnpGridAndCoordPlane;
+	GridAndCoordWidget = new QtnpGridAndCoordPlane(this);
 	GridAndCoordWidget->make_grid_checkable();
 	ui->GridAndCoordWidgetLayout->addWidget(GridAndCoordWidget);
 
@@ -55,7 +55,7 @@ void QtnpNewFileDialog::templates_setup()
 
 void QtnpNewFileDialog::add_template(uint x, uint y)
 {
-	QString* str = new QString;
+	QString *str = new QString;
 	str->append(QString::number(x));
 	str->append("x");
 	str->append(QString::number(y));
@@ -88,6 +88,7 @@ void QtnpNewFileDialog::ok_clicked(QColor gridColor,
 		if (coordPlane)
 			emit add_coord_plane(planeStep,planeColor,planeWidth);
 	}
-	this->accept();
+	//this->accept();
 	this->setCursor(Qt::ArrowCursor);
+	this->deleteLater();
 }

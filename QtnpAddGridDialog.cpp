@@ -54,4 +54,5 @@ void QtnpAddGridDialog::ok_clicked(
 	this->accept();
 	
 	this->setCursor(Qt::ArrowCursor);
+	this->close();
 }

@@ -38,7 +38,6 @@ public:
 	explicit Qtnp(QWidget *parent = 0);
 	~Qtnp();
 
-	// функции загрузки в паблике, ибо надо иметь доступ к ним из main
 	void connections();
 	void buttons_resize();
 	void load_status_bar();
@@ -61,6 +60,7 @@ private slots:
 	void set_tool_JOGGED_LINE();
 	void about();
 	void draw_graphic();
+	void wrong_exp();
 
 private:
 	digital_clock *statusbar_clock;

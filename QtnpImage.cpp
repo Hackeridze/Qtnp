@@ -19,13 +19,15 @@
 #include "fparser/fparser.h"
 #include <iostream>
 #include <math.h>
-#include <QDebug>
 #include <QPair>
 
 using namespace std;
 
 QtnpImage::QtnpImage()
 {
+	image = new QImage(1,1,QImage::Format_RGB32);
+	painter = new QPainter(image);
+	
 	new_image(1280,1024,Qt::white);
 
 	grid_max_x = 0;
@@ -51,12 +53,21 @@ QtnpImage::QtnpImage()
 
 QtnpImage::~QtnpImage()
 {
+	painter->end();
+	delete image;
+	delete painter;
+}
+
+void QtnpImage::clear_old_image()
+{
+	painter->end();
 	delete image;
 	delete painter;
 }
 
 void QtnpImage::new_image(int x, int y, QColor color)
 {
+	clear_old_image();
 	image = new QImage(x,y,QImage::Format_RGB32);
 	painter = new QPainter(image);
 	painter->fillRect(0,0, x,y, color);
@@ -106,7 +117,7 @@ void QtnpImage::grayscale()
 {
 	int x,y,r,g,b;
 	QRgb pixel;
-	 for(x=0; x<width_; x++){
+	for(x=0; x<width_; x++){
 		for(y=0; y<height_; y++){
 			pixel = image->pixel(x,y);
 			r = g = b = (int) (0.299 * qRed(pixel) + 0.587 * qGreen(pixel) + 0.114 * qBlue(pixel));
@@ -114,8 +125,8 @@ void QtnpImage::grayscale()
 			image->setPixel(x,y,pixel);
 		}
 	}
-	 remember();
-	 refresh();
+	remember();
+	refresh();
 }
 
 void QtnpImage::save_image(const QString ImageFile)
@@ -656,7 +667,7 @@ QPoint QtnpImage::get_grid_point_coordinates(QPoint gPoint, int step)
 
 void QtnpImage::draw_graphic(QString str, QColor color, int width)
 {
-	//cout << globalGridStep << ' ' << str.toStdString() << endl;
+	wrong_exp = false;
 	if (grid_step == -1 || str.isEmpty()) return;
 
 	painter->begin(image);
@@ -668,13 +679,18 @@ void QtnpImage::draw_graphic(QString str, QColor color, int width)
 	painter->setPen(gpen);
 
 	QtnpParser fparser;
-	fparser.setE(str.toStdString());
+	fparser.setE(str);
+	connect(&fparser,SIGNAL(bad_exp()),this,SLOT(bad_graphic_exp()));
 	
 	double i = grid_min_x;
-	double p_x, p_y, s_x, s_y, b_x, b_y;
+	double s_x, s_y, b_x, b_y;
 	
 	b_x = grid_min_x;
 	b_y = fparser.getR(i);
+	if (wrong_exp) {
+		emit bad_graphic_exp_error();
+		return;
+	}
 	
 	s_x = c_x+grid_step*b_x;
 	s_y = c_y-grid_step*b_y;
@@ -683,8 +699,8 @@ void QtnpImage::draw_graphic(QString str, QColor color, int width)
 	grphc.append(QPoint(nearbyint(s_x),nearbyint(s_y)));
 	
 	for (; i < grid_max_x; i += 0.05) {
-		p_x = s_x;
-		p_y = s_y;
+//		p_x = s_x;
+//		p_y = s_y;
 		b_x = i;
 		b_y = fparser.getR(i);
 		s_x = c_x+grid_step*b_x;
@@ -697,7 +713,6 @@ void QtnpImage::draw_graphic(QString str, QColor color, int width)
 		grphc.append(QPoint(nearbyint(s_x),nearbyint(s_y)));
 	}
 	
-	//painter->drawLines(lines);
 	painter->setRenderHint(QPainter::Antialiasing);
 	painter->drawPolyline(grphc);
 
@@ -711,5 +726,10 @@ void QtnpImage::draw_graphic(QString str, QColor color, int width)
 void QtnpImage::set_sticky(bool ans)
 {
 	sticking = ans;
+}
+
+void QtnpImage::bad_graphic_exp()
+{
+	wrong_exp = true;
 }
 

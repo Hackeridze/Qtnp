@@ -16,7 +16,6 @@
  */
 
 #include "fparser.h"
-#include <ostream>
 
 using namespace mu;
 
@@ -25,17 +24,18 @@ QtnpParser::QtnpParser()
 	Parser p;
 };
 
-void QtnpParser::setE(std::string str)
+void QtnpParser::setE(QString str)
 {
-	p.SetExpr(str);
+	p.SetExpr(str.toStdString());
 }
 
 double QtnpParser::getR(value_type x)
 {
 	try {
 		p.DefineVar("x",&x);
+		return p.Eval();
 	} catch (Parser::exception_type &e) {
-		std::cerr << e.GetMsg() << std::endl;
+		emit bad_exp();
+		return 0;
 	}
-	return p.Eval();
 }

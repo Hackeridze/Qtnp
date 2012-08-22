@@ -134,6 +134,7 @@ void Qtnp::connections()
 	connect(image,SIGNAL(reset_tool_menu()),tools_menu,SLOT(none()));
 	connect(tools_menu,SIGNAL(choosen_tool(QtnpTool)),image,SLOT(set_active_tool(QtnpTool)));
 	connect(sticky_draw_check_box,SIGNAL(clicked(bool)),image,SLOT(set_sticky(bool)));
+	connect(image,SIGNAL(bad_graphic_exp_error()),this,SLOT(wrong_exp()));
 }
 
 void Qtnp::load_status_bar()
@@ -309,6 +310,14 @@ void Qtnp::draw_graphic()
 	draw_graphic_dialog = new QtnpGraphicDialog(this);
 	connect(draw_graphic_dialog,SIGNAL(get_data(QString,QColor,int)),image,SLOT(draw_graphic(QString,QColor,int)));
 	draw_graphic_dialog->show();
+}
+
+void Qtnp::wrong_exp()
+{
+	QMessageBox::warning(this, tr("WRONG EXPRESSION"),
+	                     tr("Wrong expression!\n"
+	                        "It's can't be drawn"),
+	                     QMessageBox::Ok);
 }
 
 void Qtnp::set_tool_NONE()
