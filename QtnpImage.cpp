@@ -20,6 +20,7 @@
 #include <iostream>
 #include <math.h>
 #include <QPair>
+#include <QDebug>
 
 using namespace std;
 
@@ -456,14 +457,12 @@ void QtnpImage::remember(void)
 QPoint QtnpImage::closest_grid_point(QPoint p)
 {
 	double x,y;
-
 	if (p.x() > c_x)
 		x = (p.x()-c_x)/grid_step;
 	else if (p.x() < c_x)
 		x = -1*(c_x-p.x())/grid_step;
 	else 
 		x = 0;
-
 	if (p.y() > c_y)
 		y = -1*(p.y()-c_y)/grid_step;
 	else if (p.y() < c_y)

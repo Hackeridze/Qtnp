@@ -196,7 +196,7 @@ void Qtnp::about()
 	                           "&nbsp; This is free software, and you are welcome to<br>"
 	                           "&nbsp; redistribute it under certain conditions.<br>"
 	                           "&nbsp; For more look at <a href=\"http://www.gnu.org/licenses/gpl-3.0.html\">www.gnu.org</a><br>"
-	                           "<p align=\"center\"><img src=\":res/GNU_GPLv3_Logo.svg\" type=\"image/svg+xml\" width=\"250\" height=\"124\" /></p>"
+	                           "<p align=\"center\"><img src=\":res/GNU_GPLv3_Logo.png\" width=\"250\" height=\"124\" /></p>"
 	                           "&nbsp; Official git repo: <a href=\"https://github.com/Hackeridze/Qtnp\">https://github.com/Hackeridze/Qtnp</a><br>"
 	                           "<br>"
 	                           "&nbsp; E-mail: <a href=\"mailto:hackeridze@gmail.com\">hackeridze@gmail.com</a>"

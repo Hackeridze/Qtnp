@@ -6,7 +6,6 @@
         <file>res/change_pens_ico.png</file>
         <file>res/line_ico.png</file>
         <file>res/line.png</file>
-        <file>res/offspring.png</file>
         <file>res/qtnp_ru.qm</file>
         <file>res/save.png</file>
         <file>res/save_as.png</file>
@@ -24,6 +23,6 @@
         <file>res/prev.png</file>
         <file>res/template.png</file>
         <file>res/circle.png</file>
-        <file>res/GNU_GPLv3_Logo.svg</file>
+        <file>res/GNU_GPLv3_Logo.png</file>
     </qresource>
 </RCC>

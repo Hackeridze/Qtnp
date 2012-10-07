@@ -81,7 +81,6 @@ OTHER_FILES += \
     res/pencil.png \
     res/pencil_ico.png \
     res/open.png \
-    res/offspring.png \
     res/next.png \
     res/new.png \
     res/line.png \
@@ -90,11 +89,11 @@ OTHER_FILES += \
     res/jogged_ico.png \
     res/grid.png \
     res/graphic.png \
-    res/GNU_GPLv3_Logo.svg \
     res/fullscreen.png \
     res/exit.png \
     res/cursor.png \
     res/circle.png \
     res/change_pens_ico.png \
     res/about.png \
-    VERSION
+    VERSION \
+    res/GNU_GPLv3_Logo.png
