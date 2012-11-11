@@ -33,9 +33,11 @@ int main(int argc, char *argv[])
 	splash->showMessage(QObject::tr("Setting up the main window..."),
 	                    bottomLeft, Qt::black);
 
+	/* UNCOMMENT IF YOU WANNA RUSSIAN
 	QTranslator ru;// устанавливаем русский
 	ru.load(":/res/qtnp_ru");// устанавливаем русский
 	qApp->installTranslator(&ru); // устанавливаем русский
+	*/
 	Qtnp mainWindow;
 
 	splash->showMessage(QObject::tr("Making SIGNAL->SLOT connections..."),
