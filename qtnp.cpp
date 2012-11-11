@@ -135,6 +135,14 @@ void Qtnp::connections()
 	connect(tools_menu,SIGNAL(choosen_tool(QtnpTool)),image,SLOT(set_active_tool(QtnpTool)));
 	connect(sticky_draw_check_box,SIGNAL(clicked(bool)),image,SLOT(set_sticky(bool)));
 	connect(image,SIGNAL(bad_graphic_exp_error()),this,SLOT(wrong_exp()));
+	
+	//style actions
+	connect(ui->actionGTK,SIGNAL(triggered()),this,SLOT(set_style_gtk()));
+	connect(ui->actionWindows,SIGNAL(triggered()),this,SLOT(set_style_win()));
+	connect(ui->actionWindows_XP,SIGNAL(triggered()),this,SLOT(set_style_winxp()));
+	connect(ui->actionCDE,SIGNAL(triggered()),this,SLOT(set_style_cde()));
+	connect(ui->actionPlastique,SIGNAL(triggered()),this,SLOT(set_style_plastique()));
+	connect(ui->actionMotif,SIGNAL(triggered()),this,SLOT(set_style_motif()));
 }
 
 void Qtnp::load_status_bar()
@@ -343,4 +351,34 @@ void Qtnp::set_tool_ELLIPSE()
 void Qtnp::set_tool_JOGGED_LINE()
 {
 	image->set_active_tool(JOGGED_LINE);
+}
+
+void Qtnp::set_style_win()
+{
+	qApp->setStyle("windows");
+}
+
+void Qtnp::set_style_winxp()
+{
+	qApp->setStyle("windowsxp");
+}
+
+void Qtnp::set_style_gtk()
+{
+	qApp->setStyle("gtk");
+}
+
+void Qtnp::set_style_cde()
+{
+	qApp->setStyle("cde");
+}
+
+void Qtnp::set_style_plastique()
+{
+	qApp->setStyle("plastique");
+}
+
+void Qtnp::set_style_motif()
+{
+	qApp->setStyle("motif");
 }

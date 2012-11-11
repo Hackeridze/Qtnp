@@ -58,6 +58,12 @@ private slots:
 	void set_tool_SQUARE();
 	void set_tool_ELLIPSE();
 	void set_tool_JOGGED_LINE();
+	void set_style_win();
+	void set_style_winxp();
+	void set_style_gtk();
+	void set_style_cde();
+	void set_style_plastique();
+	void set_style_motif();
 	void about();
 	void draw_graphic();
 	void wrong_exp();

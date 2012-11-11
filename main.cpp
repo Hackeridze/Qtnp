@@ -27,6 +27,7 @@ int main(int argc, char *argv[])
 
 	splash->setPixmap(QPixmap(":/res/splash.png")); 
 	splash->show();
+	sleep(1);
 
 	Qt::Alignment bottomLeft = Qt::AlignBottom | Qt::AlignLeft;
 

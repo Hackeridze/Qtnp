@@ -136,8 +136,8 @@
         <rect>
          <x>0</x>
          <y>0</y>
-         <width>442</width>
-         <height>262</height>
+         <width>444</width>
+         <height>266</height>
         </rect>
        </property>
       </widget>
@@ -152,7 +152,7 @@
      <x>0</x>
      <y>0</y>
      <width>464</width>
-     <height>30</height>
+     <height>28</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuFile">
@@ -186,10 +186,23 @@
     <property name="title">
      <string>View</string>
     </property>
+    <widget class="QMenu" name="menuStyle">
+     <property name="title">
+      <string>Style</string>
+     </property>
+     <addaction name="actionGTK"/>
+     <addaction name="actionPlastique"/>
+     <addaction name="actionCDE"/>
+     <addaction name="actionMotif"/>
+     <addaction name="actionWindows"/>
+     <addaction name="actionWindows_XP"/>
+    </widget>
     <addaction name="actionFullScreen"/>
     <addaction name="separator"/>
     <addaction name="actionGrid"/>
     <addaction name="actionGraphic"/>
+    <addaction name="separator"/>
+    <addaction name="menuStyle"/>
    </widget>
    <widget class="QMenu" name="menuEffects">
     <property name="title">
@@ -374,6 +387,36 @@
   <action name="actionGraphic">
    <property name="text">
     <string>Graphic</string>
+   </property>
+  </action>
+  <action name="actionWindows">
+   <property name="text">
+    <string>Windows</string>
+   </property>
+  </action>
+  <action name="actionPlastique">
+   <property name="text">
+    <string>Plastique</string>
+   </property>
+  </action>
+  <action name="actionGTK">
+   <property name="text">
+    <string>GTK+</string>
+   </property>
+  </action>
+  <action name="actionMotif">
+   <property name="text">
+    <string>Motif</string>
+   </property>
+  </action>
+  <action name="actionWindows_XP">
+   <property name="text">
+    <string>Windows XP</string>
+   </property>
+  </action>
+  <action name="actionCDE">
+   <property name="text">
+    <string>CDE</string>
    </property>
   </action>
  </widget>
