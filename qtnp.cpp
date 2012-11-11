@@ -201,7 +201,7 @@ void Qtnp::about()
 	                   tr(
 	                           "<p align=\"center\"><span style=\" font-size:14pt; font-weight:600; color:#20AA20;\">Cute Noob-Painter</span></p>"
 	                           "<br>"
-	                           "&nbsp; Qtnp  Copyright (C) 2012  Victor Hackeridze<br>"
+	                           "&nbsp; Qtnp  Copyright (C) 2012  Victor <BruteForce><br>"
 	                           "&nbsp; This program comes with ABSOLUTELY NO WARRANTY.<br>"
 	                           "&nbsp; This is free software, and you are welcome to<br>"
 	                           "&nbsp; redistribute it under certain conditions.<br>"
@@ -209,7 +209,7 @@ void Qtnp::about()
 	                           "<p align=\"center\"><img src=\":res/GNU_GPLv3_Logo.png\" width=\"250\" height=\"124\" /></p>"
 	                           "&nbsp; Official git repo: <a href=\"https://github.com/Hackeridze/Qtnp\">https://github.com/Hackeridze/Qtnp</a><br>"
 	                           "<br>"
-	                           "&nbsp; E-mail: <a href=\"mailto:hackeridze@gmail.com\">hackeridze@gmail.com</a>"
+	                           "&nbsp; E-mail: <a href=\"mailto:bruteforce@sigil.tk\">bruteforce@sigil.tk</a>"
 	                      ));
 }
 
