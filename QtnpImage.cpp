@@ -669,17 +669,9 @@ void QtnpImage::draw_graphic(QString str, QColor color, int width)
 	wrong_exp = false;
 	if (grid_step == -1 || str.isEmpty()) return;
 
-	painter->begin(image);
-	QPen gpen;
-	gpen.setColor(color);
-	gpen.setWidth(width);
-	gpen.setJoinStyle(Qt::RoundJoin);
-	gpen.setCapStyle(Qt::RoundCap);
-	painter->setPen(gpen);
-
 	QtnpParser fparser;
 	fparser.setE(str);
-	connect(&fparser,SIGNAL(bad_exp()),this,SLOT(bad_graphic_exp()));
+	connect(&fparser,SIGNAL(bad_exp(QString)),this,SLOT(bad_graphic_exp(QString)));
 	
 	double i = grid_min_x;
 	double s_x, s_y, b_x, b_y;
@@ -690,6 +682,14 @@ void QtnpImage::draw_graphic(QString str, QColor color, int width)
 		emit bad_graphic_exp_error();
 		return;
 	}
+	
+	painter->begin(image);
+	QPen gpen;
+	gpen.setColor(color);
+	gpen.setWidth(width);
+	gpen.setJoinStyle(Qt::RoundJoin);
+	gpen.setCapStyle(Qt::RoundCap);
+	painter->setPen(gpen);
 	
 	s_x = c_x+grid_step*b_x;
 	s_y = c_y-grid_step*b_y;
@@ -702,6 +702,8 @@ void QtnpImage::draw_graphic(QString str, QColor color, int width)
 //		p_y = s_y;
 		b_x = i;
 		b_y = fparser.getR(i);
+		emit parser_strings(tr("Last value ") + QString::number(b_y));
+		
 		s_x = c_x+grid_step*b_x;
 		s_y = c_y-grid_step*b_y;
 //		painter->drawLine(
@@ -727,8 +729,9 @@ void QtnpImage::set_sticky(bool ans)
 	sticking = ans;
 }
 
-void QtnpImage::bad_graphic_exp()
+void QtnpImage::bad_graphic_exp(QString msg)
 {
 	wrong_exp = true;
+	emit parser_strings(msg);
 }
 

@@ -35,7 +35,7 @@ double QtnpParser::getR(value_type x)
 		p.DefineVar("x",&x);
 		return p.Eval();
 	} catch (Parser::exception_type &e) {
-		emit bad_exp();
+		emit bad_exp(QString::fromStdString(e.GetMsg()));
 		return 0;
 	}
 }

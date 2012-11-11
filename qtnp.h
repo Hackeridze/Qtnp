@@ -67,6 +67,7 @@ private slots:
 	void about();
 	void draw_graphic();
 	void wrong_exp();
+	void text_to_statusbar(QString text);
 
 private:
 	digital_clock *statusbar_clock;

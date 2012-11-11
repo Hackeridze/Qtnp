@@ -83,11 +83,12 @@ public slots:
 	void make_coord_plane(int CoordPlaneStep, QColor clr,int width = 1);
 	void draw_graphic(QString str, QColor color, int width);
 	void set_sticky(bool ans);
-	void bad_graphic_exp();
+	void bad_graphic_exp(QString msg);
 
 signals:
 	void reset_tool_menu();
 	void bad_graphic_exp_error();
+	void parser_strings(QString);
 };
 
 #endif // QTNPIMAGE

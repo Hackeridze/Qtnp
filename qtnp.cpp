@@ -143,6 +143,8 @@ void Qtnp::connections()
 	connect(ui->actionCDE,SIGNAL(triggered()),this,SLOT(set_style_cde()));
 	connect(ui->actionPlastique,SIGNAL(triggered()),this,SLOT(set_style_plastique()));
 	connect(ui->actionMotif,SIGNAL(triggered()),this,SLOT(set_style_motif()));
+
+	connect(image,SIGNAL(parser_strings(QString)),this,SLOT(text_to_statusbar(QString)));
 }
 
 void Qtnp::load_status_bar()
@@ -326,6 +328,11 @@ void Qtnp::wrong_exp()
 	                     tr("Wrong expression!\n"
 	                        "It's can't be drawn"),
 	                     QMessageBox::Ok);
+}
+
+void Qtnp::text_to_statusbar(QString text)
+{
+	ui->statusBar->showMessage(text, 10000);
 }
 
 void Qtnp::set_tool_NONE()

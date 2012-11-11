@@ -34,7 +34,7 @@ public:
 	void setE(QString str);
 	double getR(value_type x);
 signals:
-	void bad_exp();
+	void bad_exp(QString);
 };
 
 #endif // FPARSER_H
