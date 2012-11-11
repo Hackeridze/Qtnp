@@ -4,22 +4,22 @@
 <context>
     <name>QObject</name>
     <message>
-        <location filename="main.cpp" line="33"/>
+        <location filename="main.cpp" line="34"/>
         <source>Setting up the main window...</source>
         <translation>Настраиваю главное окно...</translation>
     </message>
     <message>
-        <location filename="main.cpp" line="41"/>
+        <location filename="main.cpp" line="42"/>
         <source>Making SIGNAL-&gt;SLOT connections...</source>
         <translation>Устанавливаем сигнал-слот соединения...</translation>
     </message>
     <message>
-        <location filename="main.cpp" line="45"/>
+        <location filename="main.cpp" line="46"/>
         <source>Making buttons size normal...</source>
         <translation>Делаем размер кнопок нормальным...</translation>
     </message>
     <message>
-        <location filename="main.cpp" line="49"/>
+        <location filename="main.cpp" line="50"/>
         <source>Loading status bar...</source>
         <translation>Загружаем статусбар...</translation>
     </message>
@@ -61,7 +61,12 @@
         <translation>Вид</translation>
     </message>
     <message>
-        <location filename="qtnp.ui" line="196"/>
+        <location filename="qtnp.ui" line="191"/>
+        <source>Style</source>
+        <translation>Внешний вид</translation>
+    </message>
+    <message>
+        <location filename="qtnp.ui" line="209"/>
         <source>Effects</source>
         <translation>Эффекты</translation>
     </message>
@@ -70,133 +75,163 @@
         <translation type="obsolete">Язык</translation>
     </message>
     <message>
-        <location filename="qtnp.ui" line="209"/>
+        <location filename="qtnp.ui" line="222"/>
         <source>New</source>
         <translation>Новый</translation>
     </message>
     <message>
-        <location filename="qtnp.ui" line="212"/>
+        <location filename="qtnp.ui" line="225"/>
         <source>Ctrl+N</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="qtnp.ui" line="217"/>
+        <location filename="qtnp.ui" line="230"/>
         <source>Open</source>
         <translation>Открыть</translation>
     </message>
     <message>
-        <location filename="qtnp.ui" line="220"/>
+        <location filename="qtnp.ui" line="233"/>
         <source>Ctrl+O</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="qtnp.ui" line="225"/>
+        <location filename="qtnp.ui" line="238"/>
         <source>Save</source>
         <translation>Сохранить</translation>
     </message>
     <message>
-        <location filename="qtnp.ui" line="228"/>
+        <location filename="qtnp.ui" line="241"/>
         <source>Ctrl+S</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="qtnp.ui" line="233"/>
+        <location filename="qtnp.ui" line="246"/>
         <source>Save as...</source>
         <translation>Сохранить как</translation>
     </message>
     <message>
-        <location filename="qtnp.ui" line="236"/>
+        <location filename="qtnp.ui" line="249"/>
         <source>Ctrl+Shift+S</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="qtnp.ui" line="241"/>
+        <location filename="qtnp.ui" line="254"/>
         <source>Undo</source>
         <translation>Отменить</translation>
     </message>
     <message>
-        <location filename="qtnp.ui" line="244"/>
+        <location filename="qtnp.ui" line="257"/>
         <source>Ctrl+Z</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="qtnp.ui" line="249"/>
+        <location filename="qtnp.ui" line="262"/>
         <source>Redo</source>
         <translation>Повторить</translation>
     </message>
     <message>
-        <location filename="qtnp.ui" line="252"/>
+        <location filename="qtnp.ui" line="265"/>
         <source>Ctrl+R</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="qtnp.ui" line="311"/>
+        <location filename="qtnp.ui" line="324"/>
         <source>Negative</source>
         <translation>Негатив</translation>
     </message>
     <message>
-        <location filename="qtnp.ui" line="316"/>
+        <location filename="qtnp.ui" line="329"/>
         <source>Grayscale</source>
         <translation>В цветах серого</translation>
     </message>
     <message>
-        <location filename="qtnp.ui" line="321"/>
+        <location filename="qtnp.ui" line="334"/>
         <source>Bright(TODO FORM)</source>
         <translation>Яркость</translation>
     </message>
     <message>
-        <location filename="qtnp.ui" line="326"/>
+        <location filename="qtnp.ui" line="339"/>
         <source>Darkness(TODO FORM)</source>
         <translation>Затемнение</translation>
     </message>
     <message>
-        <location filename="qtnp.ui" line="331"/>
+        <location filename="qtnp.ui" line="344"/>
         <source>Intensity(TODO FORM)</source>
         <translation>Интенсивность</translation>
     </message>
     <message>
-        <location filename="qtnp.ui" line="336"/>
+        <location filename="qtnp.ui" line="349"/>
         <source>Contrast(TODO FORM)</source>
         <translation>Контраст</translation>
     </message>
     <message>
-        <location filename="qtnp.ui" line="341"/>
+        <location filename="qtnp.ui" line="354"/>
         <source>Gamma(TODO FORM)</source>
         <translation>Гамма</translation>
     </message>
     <message>
-        <location filename="qtnp.ui" line="346"/>
+        <location filename="qtnp.ui" line="359"/>
         <source>Binarizing(TODO FORM)</source>
         <translation>Бинаризация</translation>
     </message>
     <message>
-        <location filename="qtnp.ui" line="351"/>
+        <location filename="qtnp.ui" line="364"/>
         <source>Binarizing 2(TODO FORM)</source>
         <translation>Бинаризация 2</translation>
     </message>
     <message>
-        <location filename="qtnp.ui" line="356"/>
+        <location filename="qtnp.ui" line="369"/>
         <source>English</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="qtnp.ui" line="361"/>
+        <location filename="qtnp.ui" line="374"/>
         <source>Russian</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="qtnp.ui" line="366"/>
+        <location filename="qtnp.ui" line="379"/>
         <source>Belarus</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="qtnp.ui" line="371"/>
+        <location filename="qtnp.ui" line="384"/>
         <source>Azerbaidzhan</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="qtnp.ui" line="376"/>
+        <location filename="qtnp.ui" line="389"/>
         <source>Graphic</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="qtnp.ui" line="394"/>
+        <source>Windows</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="qtnp.ui" line="399"/>
+        <source>Plastique</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="qtnp.ui" line="404"/>
+        <source>GTK+</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="qtnp.ui" line="409"/>
+        <source>Motif</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="qtnp.ui" line="414"/>
+        <source>Windows XP</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="qtnp.ui" line="419"/>
+        <source>CDE</source>
         <translation></translation>
     </message>
     <message>
@@ -212,63 +247,63 @@
         <translation type="obsolete">Вырезать</translation>
     </message>
     <message>
-        <location filename="qtnp.ui" line="257"/>
-        <location filename="qtnp.cpp" line="190"/>
+        <location filename="qtnp.ui" line="270"/>
+        <location filename="qtnp.cpp" line="198"/>
         <source>About Qtnp</source>
         <translation>О Qtnp</translation>
     </message>
     <message>
-        <location filename="qtnp.ui" line="260"/>
+        <location filename="qtnp.ui" line="273"/>
         <source>Ctrl+A</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="qtnp.ui" line="265"/>
+        <location filename="qtnp.ui" line="278"/>
         <source>Exit</source>
         <translation>Выход</translation>
     </message>
     <message>
-        <location filename="qtnp.ui" line="268"/>
+        <location filename="qtnp.ui" line="281"/>
         <source>Ctrl+Q</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="qtnp.ui" line="273"/>
+        <location filename="qtnp.ui" line="286"/>
         <source>Cursor</source>
         <translation>Курсор</translation>
     </message>
     <message>
-        <location filename="qtnp.ui" line="278"/>
+        <location filename="qtnp.ui" line="291"/>
         <source>Pen</source>
         <translation>Карандаш</translation>
     </message>
     <message>
-        <location filename="qtnp.ui" line="283"/>
+        <location filename="qtnp.ui" line="296"/>
         <source>FullScreen</source>
         <translation>Полноэкрынный режим</translation>
     </message>
     <message>
-        <location filename="qtnp.ui" line="286"/>
+        <location filename="qtnp.ui" line="299"/>
         <source>F11</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="qtnp.ui" line="291"/>
+        <location filename="qtnp.ui" line="304"/>
         <source>Grid</source>
         <translation>Сетка</translation>
     </message>
     <message>
-        <location filename="qtnp.ui" line="296"/>
+        <location filename="qtnp.ui" line="309"/>
         <source>Line</source>
         <translation>Линия</translation>
     </message>
     <message>
-        <location filename="qtnp.ui" line="301"/>
+        <location filename="qtnp.ui" line="314"/>
         <source>Square</source>
         <translation>Квадрат</translation>
     </message>
     <message>
-        <location filename="qtnp.ui" line="306"/>
+        <location filename="qtnp.ui" line="319"/>
         <source>Ellipse</source>
         <translation>Эллипс</translation>
     </message>
@@ -360,47 +395,47 @@
         <translation>Привязка к точкам сетки</translation>
     </message>
     <message>
-        <location filename="qtnp.cpp" line="191"/>
+        <location filename="qtnp.cpp" line="199"/>
         <source>&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:14pt; font-weight:600; color:#20AA20;&quot;&gt;Cute Noob-Painter&lt;/span&gt;&lt;/p&gt;&lt;br&gt;&amp;nbsp; Qtnp  Copyright (C) 2012  Victor Hackeridze&lt;br&gt;&amp;nbsp; This program comes with ABSOLUTELY NO WARRANTY.&lt;br&gt;&amp;nbsp; This is free software, and you are welcome to&lt;br&gt;&amp;nbsp; redistribute it under certain conditions.&lt;br&gt;&amp;nbsp; For more look at &lt;a href=&quot;http://www.gnu.org/licenses/gpl-3.0.html&quot;&gt;www.gnu.org&lt;/a&gt;&lt;br&gt;&lt;p align=&quot;center&quot;&gt;&lt;img src=&quot;:res/GNU_GPLv3_Logo.png&quot; width=&quot;250&quot; height=&quot;124&quot; /&gt;&lt;/p&gt;&amp;nbsp; Official git repo: &lt;a href=&quot;https://github.com/Hackeridze/Qtnp&quot;&gt;https://github.com/Hackeridze/Qtnp&lt;/a&gt;&lt;br&gt;&lt;br&gt;&amp;nbsp; E-mail: &lt;a href=&quot;mailto:hackeridze@gmail.com&quot;&gt;hackeridze@gmail.com&lt;/a&gt;</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="qtnp.cpp" line="217"/>
+        <location filename="qtnp.cpp" line="225"/>
         <source>Open Image...</source>
         <translation>Открыть изображение...</translation>
     </message>
     <message>
-        <location filename="qtnp.cpp" line="220"/>
+        <location filename="qtnp.cpp" line="228"/>
         <source>Image openned!</source>
         <translation>Изображение открыто</translation>
     </message>
     <message>
-        <location filename="qtnp.cpp" line="224"/>
+        <location filename="qtnp.cpp" line="232"/>
         <source>Can&apos;t open Image!</source>
         <translation>не могу открыть изображение</translation>
     </message>
     <message>
-        <location filename="qtnp.cpp" line="230"/>
+        <location filename="qtnp.cpp" line="238"/>
         <source>Save current image as...</source>
         <translation>Сохранить изображение как...</translation>
     </message>
     <message>
-        <location filename="qtnp.cpp" line="236"/>
+        <location filename="qtnp.cpp" line="244"/>
         <source>Where save?</source>
         <translation>Куда сохранить?</translation>
     </message>
     <message>
-        <location filename="qtnp.cpp" line="241"/>
+        <location filename="qtnp.cpp" line="249"/>
         <source>Save earlier</source>
         <translation>Было сохранено ранее</translation>
     </message>
     <message>
-        <location filename="qtnp.cpp" line="317"/>
+        <location filename="qtnp.cpp" line="325"/>
         <source>WRONG EXPRESSION</source>
         <translation>Неправильное выражение!</translation>
     </message>
     <message>
-        <location filename="qtnp.cpp" line="318"/>
+        <location filename="qtnp.cpp" line="326"/>
         <source>Wrong expression!
 It&apos;s can&apos;t be drawn</source>
         <translation>Невправильная функция!
@@ -411,13 +446,13 @@ It&apos;s can&apos;t be drawn</source>
         <translation type="obsolete">Сохранить файл...</translation>
     </message>
     <message>
-        <location filename="qtnp.cpp" line="252"/>
+        <location filename="qtnp.cpp" line="260"/>
         <source>*.png;;*.jpg;;*.jpeg;;*.bmp;;*.xbm;;*.xpm</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="qtnp.cpp" line="239"/>
-        <location filename="qtnp.cpp" line="266"/>
+        <location filename="qtnp.cpp" line="247"/>
+        <location filename="qtnp.cpp" line="274"/>
         <source>Save completed</source>
         <translation>Сохранено</translation>
     </message>
