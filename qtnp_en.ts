@@ -124,7 +124,7 @@
     </message>
     <message>
         <location filename="qtnp.ui" line="270"/>
-        <location filename="qtnp.cpp" line="198"/>
+        <location filename="qtnp.cpp" line="200"/>
         <source>About Qtnp</source>
         <translation></translation>
     </message>
@@ -334,58 +334,58 @@
         <translation></translation>
     </message>
     <message>
-        <location filename="qtnp.cpp" line="199"/>
+        <location filename="qtnp.cpp" line="201"/>
         <source>&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:14pt; font-weight:600; color:#20AA20;&quot;&gt;Cute Noob-Painter&lt;/span&gt;&lt;/p&gt;&lt;br&gt;&amp;nbsp; Qtnp  Copyright (C) 2012  Victor Hackeridze&lt;br&gt;&amp;nbsp; This program comes with ABSOLUTELY NO WARRANTY.&lt;br&gt;&amp;nbsp; This is free software, and you are welcome to&lt;br&gt;&amp;nbsp; redistribute it under certain conditions.&lt;br&gt;&amp;nbsp; For more look at &lt;a href=&quot;http://www.gnu.org/licenses/gpl-3.0.html&quot;&gt;www.gnu.org&lt;/a&gt;&lt;br&gt;&lt;p align=&quot;center&quot;&gt;&lt;img src=&quot;:res/GNU_GPLv3_Logo.png&quot; width=&quot;250&quot; height=&quot;124&quot; /&gt;&lt;/p&gt;&amp;nbsp; Official git repo: &lt;a href=&quot;https://github.com/Hackeridze/Qtnp&quot;&gt;https://github.com/Hackeridze/Qtnp&lt;/a&gt;&lt;br&gt;&lt;br&gt;&amp;nbsp; E-mail: &lt;a href=&quot;mailto:hackeridze@gmail.com&quot;&gt;hackeridze@gmail.com&lt;/a&gt;</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="qtnp.cpp" line="225"/>
+        <location filename="qtnp.cpp" line="227"/>
         <source>Open Image...</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="qtnp.cpp" line="228"/>
+        <location filename="qtnp.cpp" line="230"/>
         <source>Image openned!</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="qtnp.cpp" line="232"/>
+        <location filename="qtnp.cpp" line="234"/>
         <source>Can&apos;t open Image!</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="qtnp.cpp" line="238"/>
+        <location filename="qtnp.cpp" line="240"/>
         <source>Save current image as...</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="qtnp.cpp" line="244"/>
+        <location filename="qtnp.cpp" line="246"/>
         <source>Where save?</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="qtnp.cpp" line="247"/>
-        <location filename="qtnp.cpp" line="274"/>
+        <location filename="qtnp.cpp" line="249"/>
+        <location filename="qtnp.cpp" line="276"/>
         <source>Save completed</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="qtnp.cpp" line="249"/>
+        <location filename="qtnp.cpp" line="251"/>
         <source>Save earlier</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="qtnp.cpp" line="260"/>
+        <location filename="qtnp.cpp" line="262"/>
         <source>*.png;;*.jpg;;*.jpeg;;*.bmp;;*.xbm;;*.xpm</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="qtnp.cpp" line="325"/>
+        <location filename="qtnp.cpp" line="327"/>
         <source>WRONG EXPRESSION</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="qtnp.cpp" line="326"/>
+        <location filename="qtnp.cpp" line="328"/>
         <source>Wrong expression!
 It&apos;s can&apos;t be drawn</source>
         <translation></translation>
@@ -417,22 +417,277 @@ It&apos;s can&apos;t be drawn</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="QtnpGraphicDialog.ui" line="24"/>
+        <location filename="QtnpGraphicDialog.ui" line="22"/>
         <source>Formula:</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="QtnpGraphicDialog.ui" line="38"/>
+        <location filename="QtnpGraphicDialog.ui" line="34"/>
+        <source>Formula</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message utf8="true">
+        <location filename="QtnpGraphicDialog.ui" line="82"/>
+        <source>Π</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message utf8="true">
+        <location filename="QtnpGraphicDialog.ui" line="106"/>
+        <source>Π/3</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message utf8="true">
+        <location filename="QtnpGraphicDialog.ui" line="130"/>
+        <source>Π/4</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message utf8="true">
+        <location filename="QtnpGraphicDialog.ui" line="154"/>
+        <source>Π/6</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="QtnpGraphicDialog.ui" line="185"/>
+        <source>sin</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="QtnpGraphicDialog.ui" line="209"/>
+        <source>cos</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="QtnpGraphicDialog.ui" line="233"/>
+        <source>tan</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="QtnpGraphicDialog.ui" line="257"/>
+        <source>ctg</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="QtnpGraphicDialog.ui" line="288"/>
+        <source>asin</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="QtnpGraphicDialog.ui" line="312"/>
+        <source>acos</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="QtnpGraphicDialog.ui" line="336"/>
+        <source>atan</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message utf8="true">
+        <location filename="QtnpGraphicDialog.ui" line="360"/>
+        <source>√</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="QtnpGraphicDialog.ui" line="398"/>
+        <source>MIN</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="QtnpGraphicDialog.ui" line="422"/>
+        <source>MAX</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="QtnpGraphicDialog.ui" line="446"/>
+        <source>SUM</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="QtnpGraphicDialog.ui" line="470"/>
+        <source>AVG</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="QtnpGraphicDialog.ui" line="501"/>
+        <source>AND</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="QtnpGraphicDialog.ui" line="525"/>
+        <source>OR</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="QtnpGraphicDialog.ui" line="549"/>
+        <source>IF</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="QtnpGraphicDialog.ui" line="573"/>
+        <source>=</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="QtnpGraphicDialog.ui" line="604"/>
+        <source>&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="QtnpGraphicDialog.ui" line="628"/>
+        <source>&lt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="QtnpGraphicDialog.ui" line="652"/>
+        <source>!=</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="QtnpGraphicDialog.ui" line="676"/>
+        <source>^</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="QtnpGraphicDialog.ui" line="711"/>
+        <source>3</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="QtnpGraphicDialog.ui" line="735"/>
+        <source>CLEAR</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="QtnpGraphicDialog.ui" line="759"/>
+        <source>7</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="QtnpGraphicDialog.ui" line="783"/>
+        <source>0</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="QtnpGraphicDialog.ui" line="807"/>
+        <source>8</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="QtnpGraphicDialog.ui" line="831"/>
+        <source>1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="QtnpGraphicDialog.ui" line="855"/>
+        <source>9</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="QtnpGraphicDialog.ui" line="879"/>
+        <source>4</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="QtnpGraphicDialog.ui" line="903"/>
+        <source>2</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="QtnpGraphicDialog.ui" line="927"/>
+        <source>6</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="QtnpGraphicDialog.ui" line="951"/>
+        <source>5</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="QtnpGraphicDialog.ui" line="982"/>
+        <source>/</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="QtnpGraphicDialog.ui" line="1006"/>
+        <source>*</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="QtnpGraphicDialog.ui" line="1030"/>
+        <source>-</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="QtnpGraphicDialog.ui" line="1054"/>
+        <source>+</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="QtnpGraphicDialog.ui" line="1073"/>
+        <source>UNDO</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="QtnpGraphicDialog.ui" line="1086"/>
+        <source>REDO</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="QtnpGraphicDialog.ui" line="1102"/>
+        <source>Cursor &lt;--</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="QtnpGraphicDialog.ui" line="1109"/>
+        <source>Cursor --&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="QtnpGraphicDialog.ui" line="1119"/>
+        <source>DEL --&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="QtnpGraphicDialog.ui" line="1126"/>
+        <source>DEL &lt;--</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="QtnpGraphicDialog.ui" line="1145"/>
+        <source>,</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="QtnpGraphicDialog.ui" line="1164"/>
+        <source>.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="QtnpGraphicDialog.ui" line="1183"/>
+        <source>(</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="QtnpGraphicDialog.ui" line="1202"/>
+        <source>x</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="QtnpGraphicDialog.ui" line="1221"/>
+        <source>)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="QtnpGraphicDialog.ui" line="1248"/>
         <source>Line width and color:</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="QtnpGraphicDialog.ui" line="96"/>
+        <location filename="QtnpGraphicDialog.ui" line="1291"/>
         <source>OK</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="QtnpGraphicDialog.ui" line="103"/>
+        <location filename="QtnpGraphicDialog.ui" line="1298"/>
         <source>Cancel</source>
         <translation></translation>
     </message>
@@ -465,6 +720,14 @@ It&apos;s can&apos;t be drawn</source>
         <location filename="QtnpGridAndCoordPlane.cpp" line="65"/>
         <source>Color and width:</source>
         <translation></translation>
+    </message>
+</context>
+<context>
+    <name>QtnpImage</name>
+    <message>
+        <location filename="QtnpImage.cpp" line="705"/>
+        <source>Last value </source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
