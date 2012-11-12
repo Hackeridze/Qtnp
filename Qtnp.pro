@@ -67,8 +67,7 @@ FORMS += \
 RESOURCES += \
     res.qrc
 
-TRANSLATIONS = qtnp_ru.ts\
-    qtnp_en.ts
+TRANSLATIONS = qtnp_ru.ts
 
 OTHER_FILES += \
     res/template.png \

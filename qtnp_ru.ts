@@ -4,22 +4,22 @@
 <context>
     <name>QObject</name>
     <message>
-        <location filename="main.cpp" line="34"/>
+        <location filename="main.cpp" line="33"/>
         <source>Setting up the main window...</source>
         <translation>Настраиваю главное окно...</translation>
     </message>
     <message>
-        <location filename="main.cpp" line="42"/>
+        <location filename="main.cpp" line="44"/>
         <source>Making SIGNAL-&gt;SLOT connections...</source>
         <translation>Устанавливаем сигнал-слот соединения...</translation>
     </message>
     <message>
-        <location filename="main.cpp" line="46"/>
+        <location filename="main.cpp" line="48"/>
         <source>Making buttons size normal...</source>
         <translation>Делаем размер кнопок нормальным...</translation>
     </message>
     <message>
-        <location filename="main.cpp" line="50"/>
+        <location filename="main.cpp" line="52"/>
         <source>Loading status bar...</source>
         <translation>Загружаем статусбар...</translation>
     </message>
@@ -53,7 +53,7 @@
         <location filename="qtnp.ui" line="177"/>
         <location filename="qtnp.cpp" line="62"/>
         <source>Tools</source>
-        <translation>Интсрументы</translation>
+        <translation>Инcтрументы</translation>
     </message>
     <message>
         <location filename="qtnp.ui" line="187"/>
@@ -142,7 +142,7 @@
     <message>
         <location filename="qtnp.ui" line="329"/>
         <source>Grayscale</source>
-        <translation>В цветах серого</translation>
+        <translation>В оттенках серого</translation>
     </message>
     <message>
         <location filename="qtnp.ui" line="334"/>
@@ -396,7 +396,8 @@
     </message>
     <message>
         <location filename="qtnp.cpp" line="201"/>
-        <source>&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:14pt; font-weight:600; color:#20AA20;&quot;&gt;Cute Noob-Painter&lt;/span&gt;&lt;/p&gt;&lt;br&gt;&amp;nbsp; Qtnp  Copyright (C) 2012  Victor Hackeridze&lt;br&gt;&amp;nbsp; This program comes with ABSOLUTELY NO WARRANTY.&lt;br&gt;&amp;nbsp; This is free software, and you are welcome to&lt;br&gt;&amp;nbsp; redistribute it under certain conditions.&lt;br&gt;&amp;nbsp; For more look at &lt;a href=&quot;http://www.gnu.org/licenses/gpl-3.0.html&quot;&gt;www.gnu.org&lt;/a&gt;&lt;br&gt;&lt;p align=&quot;center&quot;&gt;&lt;img src=&quot;:res/GNU_GPLv3_Logo.png&quot; width=&quot;250&quot; height=&quot;124&quot; /&gt;&lt;/p&gt;&amp;nbsp; Official git repo: &lt;a href=&quot;https://github.com/Hackeridze/Qtnp&quot;&gt;https://github.com/Hackeridze/Qtnp&lt;/a&gt;&lt;br&gt;&lt;br&gt;&amp;nbsp; E-mail: &lt;a href=&quot;mailto:hackeridze@gmail.com&quot;&gt;hackeridze@gmail.com&lt;/a&gt;</source>
+        <source>&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:14pt; font-weight:600; color:#20AA20;&quot;&gt;Cute Noob-Painter&lt;/span&gt;&lt;/p&gt;&lt;br&gt;&amp;nbsp; Qtnp  Copyright &amp;copy; 2012  Victor &amp;lt;BruteForce&amp;gt;&lt;br&gt;&amp;nbsp; This program comes with ABSOLUTELY NO WARRANTY.&lt;br&gt;&amp;nbsp; This is free software, and you are welcome to&lt;br&gt;&amp;nbsp; redistribute it under certain conditions.&lt;br&gt;&amp;nbsp; For more look at &lt;a href=&quot;http://www.gnu.org/licenses/gpl-3.0.html&quot;&gt;www.gnu.org&lt;/a&gt;&lt;br&gt;&lt;p align=&quot;center&quot;&gt;&lt;img src=&quot;:res/GNU_GPLv3_Logo.png&quot; width=&quot;250&quot; height=&quot;124&quot; /&gt;&lt;/p&gt;&amp;nbsp; Official git repo: &lt;a href=&quot;https://github.com/Hackeridze/Qtnp&quot;&gt;https://github.com/Hackeridze/Qtnp&lt;/a&gt;&lt;br&gt;&lt;br&gt;&amp;nbsp; E-mail: &lt;a href=&quot;mailto:bruteforce@sigil.tk&quot;&gt;bruteforce@sigil.tk&lt;/a&gt;</source>
+        <oldsource>&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:14pt; font-weight:600; color:#20AA20;&quot;&gt;Cute Noob-Painter&lt;/span&gt;&lt;/p&gt;&lt;br&gt;&amp;nbsp; Qtnp  Copyright (C) 2012  Victor &lt;BruteForce&gt;&lt;br&gt;&amp;nbsp; This program comes with ABSOLUTELY NO WARRANTY.&lt;br&gt;&amp;nbsp; This is free software, and you are welcome to&lt;br&gt;&amp;nbsp; redistribute it under certain conditions.&lt;br&gt;&amp;nbsp; For more look at &lt;a href=&quot;http://www.gnu.org/licenses/gpl-3.0.html&quot;&gt;www.gnu.org&lt;/a&gt;&lt;br&gt;&lt;p align=&quot;center&quot;&gt;&lt;img src=&quot;:res/GNU_GPLv3_Logo.png&quot; width=&quot;250&quot; height=&quot;124&quot; /&gt;&lt;/p&gt;&amp;nbsp; Official git repo: &lt;a href=&quot;https://github.com/Hackeridze/Qtnp&quot;&gt;https://github.com/Hackeridze/Qtnp&lt;/a&gt;&lt;br&gt;&lt;br&gt;&amp;nbsp; E-mail: &lt;a href=&quot;mailto:bruteforce@sigil.tk&quot;&gt;bruteforce@sigil.tk&lt;/a&gt;</oldsource>
         <translation></translation>
     </message>
     <message>
@@ -412,7 +413,7 @@
     <message>
         <location filename="qtnp.cpp" line="234"/>
         <source>Can&apos;t open Image!</source>
-        <translation>не могу открыть изображение</translation>
+        <translation>Не могу открыть изображение</translation>
     </message>
     <message>
         <location filename="qtnp.cpp" line="240"/>
@@ -439,7 +440,7 @@
         <source>Wrong expression!
 It&apos;s can&apos;t be drawn</source>
         <translation>Невправильная функция!
-Нарисовать такую не получится</translation>
+Нарисовать такую не получится.</translation>
     </message>
     <message>
         <source>Save File</source>

@@ -201,7 +201,7 @@ void Qtnp::about()
 	                   tr(
 	                           "<p align=\"center\"><span style=\" font-size:14pt; font-weight:600; color:#20AA20;\">Cute Noob-Painter</span></p>"
 	                           "<br>"
-	                           "&nbsp; Qtnp  Copyright (C) 2012  Victor <BruteForce><br>"
+	                           "&nbsp; Qtnp  Copyright &copy; 2012  Victor &lt;BruteForce&gt;<br>"
 	                           "&nbsp; This program comes with ABSOLUTELY NO WARRANTY.<br>"
 	                           "&nbsp; This is free software, and you are welcome to<br>"
 	                           "&nbsp; redistribute it under certain conditions.<br>"
