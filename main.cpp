@@ -33,11 +33,12 @@ int main(int argc, char *argv[])
 	splash->showMessage(QObject::tr("Setting up the main window..."),
 	                    bottomLeft, Qt::black);
 
-	/* UNCOMMENT IF YOU WANNA RUSSIAN
-	QTranslator ru;// устанавливаем русский
-	ru.load(":/res/qtnp_ru");// устанавливаем русский
-	qApp->installTranslator(&ru); // устанавливаем русский
-	*/
+	QTranslator translator;
+	if (QLocale::system().name().left(2) == "ru") {
+		translator.load(":/res/qtnp_ru"); // русский/russian
+		qApp->installTranslator(&translator);
+	}
+
 	Qtnp mainWindow;
 
 	splash->showMessage(QObject::tr("Making SIGNAL->SLOT connections..."),
@@ -51,8 +52,6 @@ int main(int argc, char *argv[])
 	splash->showMessage(QObject::tr("Loading status bar..."),
 	                    bottomLeft, Qt::black);
 	mainWindow.load_status_bar();
-
-	//qApp->setStyle("plastique");
 
 	mainWindow.showMaximized();
 	splash->finish(&mainWindow);
