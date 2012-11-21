@@ -606,6 +606,9 @@
               </widget>
              </item>
              <item>
+              <layout class="QFormLayout" name="formLayout"/>
+             </item>
+             <item>
               <widget class="QPushButton" name="less">
                <property name="sizePolicy">
                 <sizepolicy hsizetype="Fixed" vsizetype="Fixed">

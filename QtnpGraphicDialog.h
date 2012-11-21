@@ -94,6 +94,8 @@ private slots:
 	void on_pow_clicked();
 	void on_undo_clicked();
 	void on_redo_clicked();
+	void on_bracket_left_2_clicked();
+	void on_bracket_right_2_clicked();
 };
 
 #endif // QTNPGRAPHICDIALOG_H

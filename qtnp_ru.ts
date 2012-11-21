@@ -716,7 +716,7 @@ It&apos;s can&apos;t be drawn</source>
     <message>
         <location filename="QtnpGraphicDialog.ui" line="1126"/>
         <source>DEL &lt;--</source>
-        <translation>Удвление &lt;--</translation>
+        <translation>Удаление &lt;--</translation>
     </message>
     <message>
         <location filename="QtnpGraphicDialog.ui" line="1145"/>

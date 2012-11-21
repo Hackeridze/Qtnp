@@ -308,3 +308,13 @@ void QtnpGraphicDialog::on_redo_clicked()
 {
 	ui->formula->redo();
 }
+
+void QtnpGraphicDialog::on_bracket_left_2_clicked()
+{
+	insert("(");
+}
+
+void QtnpGraphicDialog::on_bracket_right_2_clicked()
+{
+	insert(")");
+}
